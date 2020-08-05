@@ -4,6 +4,18 @@
 		<semantic:titleHeading>
 			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>
+			<semantic:headerContent>
+			<!--<layout:HorizontalLayout allowWrapping="true">-->
+			 
+							<Label text="Return Order:"/>
+							<Input xmlns="sap.m" value="" id="input_Order" width="15%"/>
+							<Label text="Creation Date:"/>
+							<DatePicker xmlns="sap.m" id="picker1" width="15%"/>
+							<DatePicker xmlns="sap.m" id="picker0" width="15%"/>
+							<Button xmlns="sap.m" text="Go" id="button0" type="Emphasized" press="onSearchPress"/>
+			
+			<!--</layout:HorizontalLayout>-->
+		</semantic:headerContent>
 		<semantic:content>
 			<Table id="table" width="auto" items="{ path: '/CustomerREturn', sorter: { path: 'CustomerReturn', descending: false } }"
 				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
@@ -13,15 +25,15 @@
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3"/>
 						
 						<content>
-							<Label text="Customer REturn Order" id="TextCustomerREturnOrder"/>
-							<Input xmlns="sap.m" id="InputCustomerReturnOrder"/>
-							<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
-								<layoutData>
-									<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
-								</layoutData>
-							</SearchField>
-							<Button xmlns="sap.m" text="GO" id="button0" type="Accept"/>
-							<Button xmlns="sap.m" text="" id="button0_1596618086175"/>
+							<!--<Label text="Customer REturn Order" id="TextCustomerREturnOrder"/>-->
+							<!--<Input xmlns="sap.m" id="InputCustomerReturnOrder"/>-->
+							<!--<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">-->
+							<!--	<layoutData>-->
+							<!--		<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>-->
+							<!--	</layoutData>-->
+							<!--</SearchField>-->
+							<!--<Button xmlns="sap.m" text="GO" id="button0" type="Accept"/>-->
+							<!--<Button xmlns="sap.m" text="" id="button0_1596618086175"/>-->
 						</content>
 					</OverflowToolbar>
 				</headerToolbar>

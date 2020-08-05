@@ -1,17 +1,23 @@
-<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
-	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
-	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
-	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
-	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
-	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
-	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
-		Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
 	<edmx:DataServices m:DataServiceVersion="2.0">
-		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_zcustomer_return" xml:lang="en" sap:schema-version="1">
+		<Schema Namespace="cds_zcustomer_return" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
 			<EntityType Name="I_CustomerReturnStdVHType" sap:label="Customer Return" sap:value-list="true" sap:content-version="1">
 				<Key><PropertyRef Name="CustomerReturn"/></Key><Property Name="CustomerReturn" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer Return"/></EntityType>
 			<EntityType Name="I_Customer_VHType" sap:label="Value Help for Customer" sap:value-list="true" sap:content-version="1">
@@ -112,7 +118,7 @@
 					sap:quickinfo="Overall Status of Credit Checks"/><Property Name="OverallSDDocumentRejectionSts" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Rejection Status"
 					sap:quickinfo="Rejection Status (All Items)"/><Property Name="SalesDocApprovalStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Approval Status"
 					sap:quickinfo="Sales Document Approval Status"/><Property Name="OverialApprovalSta" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:text="ApprovalStatusDesc"
-					sap:value-list="standard"/><Property Name="ApprovalStatusDesc" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/><NavigationProperty Name="to_ReturnItem" Relationship="cds_zcustomer_return.assoc_CE34A0C1B87271EECA8F96F5547915A8"
+					sap:value-list="standard"/><Property Name="ApprovalStatusDesc" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/><Property Name="ResponseDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/><NavigationProperty Name="to_ReturnItem" Relationship="cds_zcustomer_return.assoc_CE34A0C1B87271EECA8F96F5547915A8"
 					FromRole="FromRole_assoc_CE34A0C1B87271EECA8F96F5547915A8" ToRole="ToRole_assoc_CE34A0C1B87271EECA8F96F5547915A8"/></EntityType>
 			<Association Name="assoc_CE34A0C1B87271EECA8F96F5547915A8" sap:content-version="1">
 				<End Type="cds_zcustomer_return.CustomerREturnType" Multiplicity="1" Role="FromRole_assoc_CE34A0C1B87271EECA8F96F5547915A8"><OnDelete Action="Cascade"/></End><End Type="cds_zcustomer_return.CustomerReturnItemType" Multiplicity="*" Role="ToRole_assoc_CE34A0C1B87271EECA8F96F5547915A8"/>
@@ -138,7 +144,7 @@
 				<AssociationSet Name="assoc_CE34A0C1B87271EECA8F96F5547915A8" Association="cds_zcustomer_return.assoc_CE34A0C1B87271EECA8F96F5547915A8"
 					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="CustomerREturn" Role="FromRole_assoc_CE34A0C1B87271EECA8F96F5547915A8"/><End EntitySet="CustomerReturnItem" Role="ToRole_assoc_CE34A0C1B87271EECA8F96F5547915A8"/></AssociationSet>
 			</EntityContainer>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerReturnItemType/CustomerReturn">
+			<Annotations Target="cds_zcustomer_return.CustomerReturnItemType/CustomerReturn" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Customer Return"/><PropertyValue Property="CollectionPath" String="I_CustomerReturnStdVH"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -149,7 +155,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerReturnItemType/Material">
+			<Annotations Target="cds_zcustomer_return.CustomerReturnItemType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Material"/><PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/><PropertyValue Property="SearchSupported" Bool="true"/>
 						<PropertyValue Property="Parameters">
@@ -161,7 +167,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerReturnItemType/ShippingPoint">
+			<Annotations Target="cds_zcustomer_return.CustomerReturnItemType/ShippingPoint" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Shipping Point"/><PropertyValue Property="CollectionPath" String="I_ShippingPointStdVH"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -173,7 +179,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerReturnItemType/ReferenceSDDocument">
+			<Annotations Target="cds_zcustomer_return.CustomerReturnItemType/ReferenceSDDocument" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Sales Document"/><PropertyValue Property="CollectionPath" String="I_SalesDocumentStdVH"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -184,7 +190,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerReturnItemType/ReferenceSDDocumentItem">
+			<Annotations Target="cds_zcustomer_return.CustomerReturnItemType/ReferenceSDDocumentItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Sales Document Item"/><PropertyValue Property="CollectionPath" String="I_SalesDocumentItemStdVH"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -197,7 +203,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerREturnType/CustomerReturn">
+			<Annotations Target="cds_zcustomer_return.CustomerREturnType/CustomerReturn" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Customer Return Overview"/><PropertyValue Property="CollectionPath" String="CustomerREturn"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -247,12 +253,13 @@
 								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SalesDocApprovalStatus"/></Record>
 								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverialApprovalSta"/></Record>
 								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ApprovalStatusDesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ResponseDate"/></Record>
 							</Collection>
 						</PropertyValue>
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerREturnType/SoldToParty">
+			<Annotations Target="cds_zcustomer_return.CustomerREturnType/SoldToParty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Value Help for Customer"/><PropertyValue Property="CollectionPath" String="I_Customer_VH"/><PropertyValue Property="SearchSupported" Bool="true"/>
 						<PropertyValue Property="Parameters">
@@ -272,7 +279,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.CustomerREturnType/OverialApprovalSta">
+			<Annotations Target="cds_zcustomer_return.CustomerREturnType/OverialApprovalSta" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Common.ValueList">
 					<Record><PropertyValue Property="Label" String="Approval Status"/><PropertyValue Property="CollectionPath" String="z_cds_returnapp_sta"/><PropertyValue Property="SearchSupported" Bool="false"/>
 						<PropertyValue Property="Parameters">
@@ -285,7 +292,7 @@
 					</Record>
 				</Annotation>
 			</Annotations>
-			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zcustomer_return.cds_zcustomer_return_Entities">
+			<Annotations Target="cds_zcustomer_return.cds_zcustomer_return_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
 				<Annotation Term="Aggregation.ApplySupported">
 					<Record>
 						<PropertyValue Property="Transformations">
@@ -296,6 +303,10 @@
 							</Collection>
 						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
 				</Annotation>
-			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZCUSTOMER_RETURN/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZCUSTOMER_RETURN/$metadata"/></Schema>
+			</Annotations><atom:link rel="self"
+				href="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/sap/ZCUSTOMER_RETURN/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-s3td7fnnd5.dispatcher.hana.ondemand.com/destinations/S4X011_WebIDE_NonSSO/sap/opu/odata/sap/ZCUSTOMER_RETURN/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

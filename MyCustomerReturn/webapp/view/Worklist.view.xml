@@ -1,90 +1,73 @@
-<mvc:View
-	controllerName="cn.bosch.MyCustomerReturn.controller.Worklist"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic">
-
-	<semantic:SemanticPage
-		id="page"
-		headerPinnable="false"
-		toggleHeaderOnTitleClick="false">
-
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" controllerName="cn.bosch.MyCustomerReturn.controller.Worklist">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
 		<semantic:titleHeading>
-			<Title
-				text="{i18n>worklistTitle}"
-				level="H2"/>
+			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>
-
 		<semantic:content>
-			<Table
-				id="table"
-				width="auto"
-				items="{
-					path: '/CustomerREturn',
-					sorter: {
-						path: 'CustomerReturn',
-						descending: false
-					}
-				}"
-				noDataText="{worklistView>/tableNoDataText}"
-				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
-				growing="true"
-				growingScrollToLoad="true"
-				updateFinished=".onUpdateFinished">
-
+			<Table id="table" width="auto" items="{ path: '/CustomerREturn', sorter: { path: 'CustomerReturn', descending: false } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
 				<headerToolbar>
 					<OverflowToolbar>
-						<Title
-							id="tableHeader"
-							text="{worklistView>/worklistTableTitle}"
-							level="H3"/>
-						<ToolbarSpacer />
-						<SearchField
-							id="searchField"
-							tooltip="{i18n>worklistSearchTooltip}"
-							search=".onSearch">
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3"/>
+					
+						<ToolbarSpacer/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
 							<layoutData>
-								<OverflowToolbarLayoutData
-									maxWidth="200px"
-									priority="NeverOverflow"/>
+								<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
 							</layoutData>
 						</SearchField>
+						<content>
+							 
+							 
+							 
+							<Button xmlns="sap.m" text="GO" id="button0" type="Accept"/>
+							 
+							
+				
+						</content>
 					</OverflowToolbar>
+					
 				</headerToolbar>
-
 				<columns>
-					<Column id="nameColumn">
-						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					<Column id="ReturnOrder">
+						<Text text="{i18n>Customer Return Order}" id="ReturnOrderTitle"/>
 					</Column>
-					<Column id="unitNumberColumn" hAlign="End">
-						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+					<Column id="SalesOrg" hAlign="End">
+						<Text text="{i18n>Sales Orgnization}" id="SalesOrgTitle"/>
 					</Column>
+					<Column id="CustomerNumber">
+						<Text text="{i18n>CustomerNumberTitle}" id="CustomerNumberTitle"/>
+					</Column>
+					<Column id="CustomerName" hAlign="End">
+						<Text text="{i18n>CustomerNameTitle}" id="CustomerNameTitle"/>
+					</Column>
+					<Column id="CreationDate">
+						<Text text="{i18n>Creation Date}" id="CreationDateTitle"/>
+					</Column>
+					<Column id="ReponseDate" hAlign="End">
+						<Text text="{i18n>ReponseDateTitle}" id="ReponseDateTitle"/>
+					</Column>
+					<Column id="ApprovalSta" hAlign="End">
+						<Text text="{i18n>ApprovalStaTitle}" id="ApprovalStaTitle"/>
+					</Column>
+				  
 				</columns>
-
 				<items>
-					<ColumnListItem
-						type="Navigation"
-						press=".onPress">
+					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
-							<ObjectIdentifier
-								title="{CustomerReturn}"/>
-							<ObjectNumber
-								number="{
-									path: 'TotalNetAmount',
-									formatter: '.formatter.numberUnit'
-								}"
-								unit="{TransactionCurrency}"/>
+							<ObjectIdentifier title="{CustomerReturn}"/>
+							<ObjectIdentifier title="{SalesOrganization}"/>
+							<ObjectIdentifier title="{SoldToParty}"/>
+							<ObjectIdentifier title="{CustomerName}"/>
+							<ObjectIdentifier title="{CreationDate}"/>
+							<ObjectIdentifier title="{ResponseDate}"/>
+							<ObjectIdentifier title="{OverialApprovalSta}" text="{ApprovalStatusDesc}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
 		</semantic:content>
-
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>
-
-
 	</semantic:SemanticPage>
-
 </mvc:View>

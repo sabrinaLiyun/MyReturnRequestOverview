@@ -1,5 +1,5 @@
 {
-  "xsappname": "mta_CustomerReturn",
+  "xsappname": "mta_MyCustomerReturn",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
   "role-templates": [

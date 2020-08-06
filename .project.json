@@ -1,0 +1,13 @@
+{
+    "dataBinding": {
+        "/webapp/view/Page1_1.view.xml": {
+            "entitySet": ""
+        }, 
+        "/webapp/view/Page2.view.xml": {
+            "entitySet": ""
+        }, 
+        "/webapp/view/Page3.view.xml": {
+            "entitySet": ""
+        } 
+    }
+}

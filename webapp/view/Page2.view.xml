@@ -43,14 +43,14 @@
 					<HBox>
 						<items>
 							<Label text="Creation Date：" width="120px" textDirection="LTR" textAlign="Left"/>
-							<ObjectStatus text="{path: 'OrderResource>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+							<ObjectStatus text="{path: 'OrderResource>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"/>
 						</items>
 						
 					</HBox>
 					<HBox>
 						<items>
 							<Label text="Response Date：" width="120px" textDirection="LTR" textAlign="Left"/>
-							<ObjectStatus text="{path: 'OrderResource>/ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+							<ObjectStatus text="{path: 'OrderResource>/ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd'}}"/>
 						</items>
 					</HBox>
 				</items>

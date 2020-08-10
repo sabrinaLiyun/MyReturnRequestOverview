@@ -151,10 +151,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.oRouter.getTarget("Page1_1").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 			this.oFilterBar = null;
 			this.oFilterBar = this.getView().byId("ListReportFilterBar");
-			var oBasicSearch = new sap.m.SearchField({
-				showSearchButton: true
-			});
-			this.oFilterBar.setBasicSearch(oBasicSearch);
+			// var oBasicSearch = new sap.m.SearchField({
+			// 	showSearchButton: true
+
+			// });
+
+			// // oBasicSearch.attachSearch(".onBasecSearch");
+			// this.oFilterBar.setBasicSearch(oBasicSearch);
 
 		},
 		onExit: function () {
@@ -181,7 +184,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		onSearch: function (oEvent) {
 			var sMessage = "onSearch trigered";
-			MessageToast.show(sMessage);
+			// MessageToast.show(sMessage);
 			var i;
 
 			// build filter array OveralApprovalStatus
@@ -223,8 +226,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			// }
 
 			// filter binding
-			var oList = this.byId("TabCustomerReturn");
-			var oBinding = oList.getBinding("items");
+			var oTable = this.byId("TabCustomerReturn");
+			var oBinding = oTable.getBinding("items");
+			oBinding.filter(aFilter);
+		},
+
+		onBasecSearch: function (oEvent) {
+			var aFilter = [];
+			var sQuery = oEvent.getParameter("query");
+			if (sQuery) {
+				aFilter.push(new Filter("CustomerReturn", FilterOperator.Contains, sQuery));
+			}
+			var oTable = this.byId("TabCustomerReturn");
+			var oBinding = oTable.getBinding("items");
 			oBinding.filter(aFilter);
 		}
 

@@ -14,6 +14,7 @@
 		<f:header>
 			<f:DynamicPageHeader pinnable="true">
 				<f:content>
+			    <SearchField id = "searchCustomerReturn" width="25%" search = ".onBasecSearch" placeholder="Search for Customer Returtn Order" ></SearchField>
 					<filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" search="onSearch">
 						<filterbar:filterItems>
 							<filterbar:FilterItem label="Creation Date" id="datePCreateDate" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556875050---0">
@@ -46,7 +47,7 @@
 		<f:content>
 			<VBox fitContainer="true">
 				<items>
-					<Table id="TabCustomerReturn" width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/CustomerREturn', templateShareable:true}">
+					<Table id="TabCustomerReturn" width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/CustomerREturn',  sorter: { path: 'CustomerReturn', descending: true }, templateShareable:true}">
 						<headerToolbar>
 							<OverflowToolbar design="Transparent">
 								<content>

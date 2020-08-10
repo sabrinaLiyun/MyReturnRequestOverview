@@ -105,7 +105,7 @@
                                     <Text text="{CustomerName}"/>
                                     <ObjectStatus text="{path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy/MM/dd' }}"/>
                                     <ObjectStatus text="{path: 'ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy/MM/dd' }}"/>
-                                    <ObjectStatus id="ApprovalStatus" text="{App,rovalStatusDesc}"/> 
+                                    <ObjectStatus id="ApprovalStatus" text="{ApprovalStatusDesc}"/> 
  
                                 </cells>
                             </ColumnListItem>

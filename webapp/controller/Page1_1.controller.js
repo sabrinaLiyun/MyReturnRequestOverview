@@ -183,7 +183,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		onSearch: function (oEvent) {
-			var sMessage = "onSearch trigered";
+			// var sMessage = "onSearch trigered";
 			// MessageToast.show(sMessage);
 			var i;
 

@@ -65,6 +65,39 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			return oQuery;
 
 		},
+		_onButtonPress: function() {
+			return new Promise(function(fnResolve) {
+				var sTargetPos = "center center";
+				sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;
+				sap.m.MessageToast.show("Return Order was created successfully", {
+					onClose: fnResolve,
+					duration: 3000 || 3000,
+					at: sTargetPos,
+					my: sTargetPos
+				});
+			}).catch(function(err) {
+				if (err !== undefined) {
+					MessageBox.error(err.message);
+				}
+			});
+
+		},
+		_onButtonPress1: function() {
+			return new Promise(function(fnResolve) {
+				sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
+					title: "Cancel",
+					actions: ["Yes", "No"],
+					onClose: function(sActionClicked) {
+						fnResolve(sActionClicked === "Yes");
+					}
+				});
+			}).catch(function(err) {
+				if (err !== undefined) {
+					MessageBox.error(err);
+				}
+			});
+
+		},
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("Page3").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));

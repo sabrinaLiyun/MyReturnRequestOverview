@@ -1,132 +1,126 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.myReturnOrder.controller.Page1_1">
-	<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
-		<f:title>
-			<f:DynamicPageTitle>
-				<f:heading>
-					<variants:VariantManagement/>
-				</f:heading>
-				<f:actions>
-					<ToolbarSpacer/>
-					<Button icon="sap-icon://action" type="Transparent"/>
-				</f:actions>
-			</f:DynamicPageTitle>
-		</f:title>
-		<f:header>
-			<f:DynamicPageHeader pinnable="true">
-				<f:content>
-			    <SearchField id = "searchCustomerReturn" width="25%" search = ".onBasecSearch" placeholder="Search for Customer Returtn Order" ></SearchField>
-					<filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" search="onSearch">
-						<filterbar:filterItems>
-							<filterbar:FilterItem label="Creation Date" id="datePCreateDate" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556875050---0">
-								<filterbar:control>
-									<DatePicker width="auto" id="datePCreateDatep" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
-								</filterbar:control>
-							</filterbar:FilterItem>
-							<filterbar:FilterItem label="Response Date" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556941578---0">
-								<filterbar:control>
-									<DatePicker width="auto" displayFormat="medium" id="datePResponseDate" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
-								</filterbar:control>
-							</filterbar:FilterItem>
-							<filterbar:FilterItem label="Status" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1595557051832---0">
-								<filterbar:control>
-									<MultiComboBox id="comboApprovalSta">
-										<items>
-											<core:Item key="00" text="Waiting for Approval"/>
-											<core:Item key="01" text="Approved"/>
-											<core:Item key="02" text="Rejected"/>
-											<core:Item key="03" text="Partially Approved"/>
-										</items>
-									</MultiComboBox>
-								</filterbar:control>
-							</filterbar:FilterItem>
-						</filterbar:filterItems>
-					</filterbar:FilterBar>
-				</f:content>
-			</f:DynamicPageHeader>
-		</f:header>
-		<f:content>
-			<VBox fitContainer="true">
-				<items>
-					<Table id="TabCustomerReturn" width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/CustomerREturn',  sorter: { path: 'CustomerReturn', descending: true }, templateShareable:true}">
-						<headerToolbar>
-							<OverflowToolbar design="Transparent">
-								<content>
-									<Title textAlign="Begin" text="Objects"/>
-									<Title text="(1)"/>
-									<ToolbarSpacer/>
-									<Button text="Create new return order" iconFirst="false" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress">
-										<layoutData>
-											<OverflowToolbarLayoutData moveToOverflow="true"/>
-										</layoutData>
-									</Button>
-									<Button icon="sap-icon://action-settings" type="Transparent">
-										<layoutData>
-											<OverflowToolbarLayoutData moveToOverflow="true"/>
-										</layoutData>
-									</Button>
-								</content>
-							</OverflowToolbar>
-						</headerToolbar>
-						<columns>
-							<Column width="auto" minScreenWidth="Phone">
-								<header>
-									<Text text="Return Order" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Phone">
-								<header>
-									<Text text="Sales org" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Phone">
-								<header>
-									<Text text="Customer Number" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Phone">
-								<header>
-									<Text text="Customer Name" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
-								<header>
-									<Text text="Creation Date" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
-								<header>
-									<Text text="Response Date" width="auto"/>
-								</header>
-							</Column>
-							<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
-								<header>
-									<Text text="Status" width="auto"/>
-								</header>
-							</Column>
-						</columns>
-						<items>
-							<ColumnListItem type="Navigation">
-								<cells>
-									<Text text="{CustomerReturn}"/>
-									<Text text="{SalesOrganization}"/>
-									<Text text="{SoldToParty}"/>
-									<Text text="{CustomerName}"/>
-									<ObjectStatus text="{path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
-									<ObjectStatus text="{path: 'ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
-									<ObjectStatus text="{ApprovalStatusDesc}"/>
-								</cells>
-							</ColumnListItem>
-						</items>
-					</Table>
-				</items>
-			</VBox>
-		</f:content>
-		<f:footer>
-			<OverflowToolbar>
-				<content>
-					<ToolbarSpacer/>
-				</content>
-			</OverflowToolbar>
-		</f:footer>
-	</f:DynamicPage>
+    <f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <variants:VariantManagement/>
+                </f:heading>
+                <f:actions>
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://action" type="Transparent"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true">
+                        <filterbar:filterItems>
+                            <filterbar:FilterItem label="Creation Date" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556875050---0">
+                                <filterbar:control>
+                                    <DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="Response Date" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556941578---0">
+                                <filterbar:control>
+                                    <DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="Status" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1595557051832---0">
+                                <filterbar:control>
+                                    <MultiComboBox>
+                                        <items>
+                                            <core:Item key="" text=""/>
+                                        </items>
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                        </filterbar:filterItems>
+                    </filterbar:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox fitContainer="true">
+                <items>
+                    <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished" 
+                    items="{path: '/CustomerREturn', sorter: { path: 'CustomerReturn', descending: true }}">
+                        <headerToolbar>
+                            <OverflowToolbar design="Transparent">
+                                <content>
+                                    <Title textAlign="Begin" text="Objects"/>
+                                    <Title text="(1)"/>
+                                    <ToolbarSpacer/>
+                                    <Button text="Create New Return Order" iconFirst="false" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress">
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                        </layoutData>
+                                    </Button>
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Return Order" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Sales org" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Customer Number" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Customer Name" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                <header>
+                                    <Text text="Creation Date" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                <header>
+                                    <Text text="Response Date" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                <header>
+                                    <Text text="Status" width="auto"/>
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Navigation">
+                                <cells>
+                                    <Text text="{CustomerReturn}"/>
+                                    <Text text="{SalesOrganization}"/>
+                                    <Text text="{SoldToParty}"/>
+                                    <Text text="{CustomerName}"/>
+                                    <ObjectStatus text="{path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+                                    <ObjectStatus text="{path: 'ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+                                    <ObjectStatus id="ApprovalStatus" text="{ApprovalStatusDesc}"/> 
+ 
+
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </items>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer/>
+                </content>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
 </mvc:View>

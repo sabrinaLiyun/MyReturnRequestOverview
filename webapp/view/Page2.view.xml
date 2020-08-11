@@ -129,8 +129,8 @@
 											<Text text="{zreturn>MaterialByCustomer}"/>
 											<Text text="{zreturn>RequestedQuantity}"/>
 											<Text text="{zreturn>RequestedQuantityUnit}"/>
-											<ObjectStatus text="{zreturn>ReturnReason}"/>
-											<ObjectStatus text="{zreturn>ReturnsRefundType}"/>
+											<ObjectStatus text="{zreturn>ReturnReasonName}"/>
+											<ObjectStatus text="{zreturn>RefundTypeDescription}"/>
 											<ObjectStatus id="ApprovalStatus" text="{zreturn>ApprovalStatusDesc}" state="{path: 'zreturn>ApprovalStatusDesc', formatter:'.formatAvailableToObjectState' }"/>
 										</cells>
 									</ColumnListItem>

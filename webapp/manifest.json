@@ -22,6 +22,13 @@
 				"settings": {
 					"localUri": "localService/ZCUSTOMER_RETURN/metadata.xml"
 				}
+			},
+			"API_CUSTOMER_RETURN_SRV": {
+				"uri": "/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/API_CUSTOMER_RETURN_SRV/metadata.xml"
+				}
 			}
 		},
 		"title": "{{appTitle}}",
@@ -95,6 +102,16 @@
 					"defaultCountMode": "Request"
 				},
 				"dataSource": "ZCUSTOMER_RETURN",
+				"preload": true
+			},
+			"ZRETURN_SAP": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "API_CUSTOMER_RETURN_SRV",
 				"preload": true
 			}
 		},

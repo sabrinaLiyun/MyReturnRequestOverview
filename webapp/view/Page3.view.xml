@@ -1,23 +1,20 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-	controllerName="com.sap.build.standard.myReturnOrder.controller.Page3">
-	<Page showHeader="true" title="Create New Return Order" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
-		<content>
-			<form:Form width="100%" editable="true" visible="true">
-				<form:title>
-					<core:Title text="Header" level="Auto"/>
-				</form:title>
-				<form:formContainers>
-					<form:FormContainer visible="true">
-						<form:formElements>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" controllerName="com.sap.build.standard.myReturnOrder.controller.Page3">
+    <Page showHeader="true" title="Create New Return Order" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
+        <content>
+            <form:Form width="100%" editable="true" visible="true">
+                <form:title>
+                    <core:Title text="Header" level="Auto"/>
+                </form:title>
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
 							<form:FormElement visible="true">
 								<form:label>
 									<Label text="Customer number" design="Standard" width="200px" required="false" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<ComboBox xmlns="sap.m" id="customerNo" items="{zreturn>/CustomerData}">
-										<items>
-											<core:Item xmlns:core="sap.ui.core" key="{zreturn>Customer}" text="{zreturn>Customer}" id="item29"/>
-										</items>
+									<ComboBox id="Combox_CustomerID" width="400px" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }">
+										<core:Item key="{zreturn>CusomterID}" text="{zreturn>CusomterID}"/>
 									</ComboBox>
 									<Text width="600px" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
 								</form:fields>
@@ -27,25 +24,23 @@
 									<Label text="Sales Area" design="Standard" width="200px" required="false" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<ComboBox editable="true" enabled="true" visible="true" width="400px" valueState="None" maxWidth="100%">
-										<items>
-											<core:Item text="Item" enabled="true" key="Item"/>
-											<core:Item text="Item" enabled="true" key="Item"/>
-											<core:Item text="Item" enabled="true" key="Item"/>
-										</items>
+									<ComboBox id="Combox_SalesAreaID" width="400px" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'SalesOrg' } }">
+										<core:Item key="{zreturn>SalesOrg}/{zreturn>SalesChannel}/{zreturn>SalesDivision}"
+											text="{zreturn>SalesOrg}/{zreturn>SalesChannel}/{zreturn>SalesDivision}"/>
 									</ComboBox>
 								</form:fields>
 							</form:FormElement>
-						</form:formElements>
-						<form:title/>
-					</form:FormContainer>
-				</form:formContainers>
-				<form:layout>
-					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="3" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-				</form:layout>
-			</form:Form>
+                        </form:formElements>
+                        <form:title/>
+                    </form:FormContainer>
+                </form:formContainers>
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="3" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
 			<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20"
-				growingScrollToLoad="true" class="sapUiResponsiveMargin">
+				growingScrollToLoad="true" class="sapUiResponsiveMargin" 
+				>
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
 						<content>
@@ -58,7 +53,8 @@
 						<content>
 							<Title text="Items (3)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
 							<ToolbarSpacer width=""/>
-							<Button text="Delete" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+							<Button text="Add" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onAdd"/>
+							<Button text="Delete" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onDelete"/>
 						</content>
 					</OverflowToolbar>
 				</headerToolbar>
@@ -103,21 +99,21 @@
 				<items>
 					<ColumnListItem type="Active">
 						<cells>
-							<Input xmlns="sap.m" id="input2"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text13"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy16"/>
+								id="Material1"/>
+							<Text text="eRacer V2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes1"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								id="Quantity1"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy6"/>
-							<ComboBox xmlns="sap.m" id="box2" items="{zreturn>/ReturnReasonText}">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="Unit1"/>
+							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason1" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReasonName}" text="{zreturn>ReturnReasonName}" id="item26"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason1"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns="sap.m" id="box3" items="{zreturn>/RefundTypeText}">
+							<ComboBox xmlns="sap.m" id="ComboBoxRefundType1" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>RefundTypeDescription}" text="{zreturn>RefundTypeDescription}" id="item27"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType1"/>
 								</items>
 							</ComboBox>
 						</cells>
@@ -125,171 +121,59 @@
 					<ColumnListItem type="Active">
 						<cells>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy4"/>
-							<Text width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/><Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy20"/>
+								id="Material2"/>
+							<Text text="eRacer V2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes2"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								id="Quantity2"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy"/>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy2">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="Unit2"/>
+							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason2" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy2"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy2"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason2"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy4">
+							<ComboBox xmlns="sap.m" id="ComboBoxRefundType2" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy4"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy4"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType2"/>
 								</items>
 							</ComboBox>
 						</cells>
 					</ColumnListItem>
-					<ColumnListItem xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-						xmlns="sap.m" type="Active" id="item23">
+					<ColumnListItem type="Active">
 						<cells>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy9"/>
-							<Text width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text16"/>
+								id="Material3"/>
+							<Text text="eRacer V3" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes3"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy22"/>
+								id="Quantity3"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy3"/>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy5">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text13_copy3"/>
+							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason3" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy5"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy5"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason3"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy7">
+							<ComboBox xmlns="sap.m" id="ComboBoxRefundType3" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy7"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy7"/>
-								</items>
-							</ComboBox>
-						</cells>
-					</ColumnListItem>
-					<ColumnListItem xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-						xmlns="sap.m" type="Active" id="item24">
-						<cells>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy11"/>
-							<Text width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text17"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy23"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy4"/>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy8">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy8"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy8"/>
-								</items>
-							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy9">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy9"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy9"/>
-								</items>
-							</ComboBox>
-						</cells>
-					</ColumnListItem>
-					<ColumnListItem xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-						xmlns="sap.m" type="Active" id="item25">
-						<cells>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy13"/>
-							<Text width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text18"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy24"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy5"/>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy10">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy10"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy10"/>
-								</items>
-							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy11">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy11"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy11"/>
-								</items>
-							</ComboBox>
-						</cells>
-					</ColumnListItem>
-					<ColumnListItem xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-						xmlns="sap.m" type="Active" id="item121">
-						<cells>
-							<Input xmlns="sap.m" id="input2_copy2"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text13_copy"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy17"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy7"/>
-							<ComboBox xmlns="sap.m" id="box2_copy12">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy12"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy12"/>
-								</items>
-							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy13">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy13"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy13"/>
-								</items>
-							</ComboBox>
-						</cells>
-					</ColumnListItem>
-					<ColumnListItem xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-						xmlns="sap.m" type="Active" id="item150">
-						<cells>
-							<Input xmlns="sap.m" id="input2_copy18"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text13_copy2"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="input2_copy19"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text14_copy8"/>
-							<ComboBox xmlns="sap.m" id="box2_copy14">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy14"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy14"/>
-								</items>
-							</ComboBox>
-							<ComboBox xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="box2_copy15">
-								<items>
-									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item26_copy15"/>
-									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item27_copy15"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType3"/>
 								</items>
 							</ComboBox>
 						</cells>
 					</ColumnListItem>
 				</items>
 			</Table>
-		</content>
-		<footer>
-			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
-				<content>
-					<ToolbarSpacer width=""/>
-					<Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
-						press="_onButtonPress"/>
-					<Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
-						press="_onButtonPress1"/>
-				</content>
-			</OverflowToolbar>
-		</footer>
-		<headerContent/>
-		<subHeader/>
-		<customHeader/>
-	</Page>
+        </content>
+        <footer>
+            <OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+                <content>
+                    <ToolbarSpacer width=""/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onSave"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+                </content>
+            </OverflowToolbar>
+        </footer>
+        <headerContent/>
+        <subHeader/>
+        <customHeader/>
+    </Page>
 </mvc:View>

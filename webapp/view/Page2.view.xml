@@ -9,7 +9,7 @@
 							<Button type="Back" press="_onPageNavButtonPress"/>
 						</contentLeft>
 						<contentMiddle>
-							<Title text="My Return Order"/>
+							<Title text="My Return Orders"/>
 						</contentMiddle>
 						<contentRight/>
 					</Bar>

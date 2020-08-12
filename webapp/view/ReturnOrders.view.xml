@@ -17,9 +17,16 @@
 			<f:header>
 				<f:DynamicPageHeader pinnable="true">
 					<f:content>
-						<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Customer Returtn Order"></SearchField>
+						
 						<filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" search="onSearch">
 							<filterbar:filterItems>
+								<filterbar:FilterItem label="Return Order"
+									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem">
+									<filterbar:control>
+											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Customer Return Order"></SearchField>
+									</filterbar:control>
+								</filterbar:FilterItem>
+								
 								<filterbar:FilterItem label="Creation Date" id="datePCreateDate"
 									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556875050---0">
 									<filterbar:control>

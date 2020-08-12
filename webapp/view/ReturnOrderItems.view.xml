@@ -9,7 +9,7 @@
 							<Button type="Back" press="_onPageNavButtonPress"/>
 						</contentLeft>
 						<contentMiddle>
-							<Title text="My Return Orders"/>
+							<Title text=""/>
 						</contentMiddle>
 						<contentRight/>
 					</Bar>
@@ -37,7 +37,7 @@
 					</HBox>
 				</items>
 			</VBox>
-			<Text text="{OrderResource>/CustName}" width="350px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+			<Text text="{OrderResource>/CustName}" width="300px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 			<VBox alignContent="End" width="500px">
 				<items>
 					<HBox>

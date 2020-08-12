@@ -150,6 +150,43 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}
 
 			});
+		},
+
+		onAdd: function (oEvent) {
+			var oItem = new sap.m.ColumnListItem({
+				cells: [new sap.m.Input(),
+					new sap.m.Label({
+						text: "Fire"
+					}),
+					new sap.m.Input(),
+					new sap.m.Label({
+						text: "PC"
+					}),
+					new sap.m.ComboBox({
+						//items: "{zreturn>/ReturnReasonText}"
+							// items: "{path: '{zreturn>/ReturnReasonText}'}"
+							// , 
+							// template: new sap.ui.core.ListItem({text: "{zreturn>ReturnReasonName}", 
+							//                                      key: "{zreturn>ReturnReason}"
+							//                                      }) 
+							// 
+					}),
+					new sap.m.ComboBox(
+						// {key: "{zreturn>ReturnsRefundType}", text: "{zreturn>RefundTypeDescription}"}
+					)
+				]
+			});
+			var oTable = this.getView().byId("oTableCreate");
+			oTable.addItem(oItem);
+		},
+		onDelete: function (oEvent) {
+			var oTable = this.getView().byId("oTableCreate");
+			var sSelectItems = oTable.getSelectedItems();
+			var i = 0;
+			while (i < sSelectItems.length) {
+				oTable.removeItem(sSelectItems[i]);
+				i++;
+			}
 		}
 	});
 }, /* bExport= */ true);

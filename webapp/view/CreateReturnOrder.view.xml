@@ -40,6 +40,7 @@
             </form:Form>
 			<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20"
 				growingScrollToLoad="true" class="sapUiResponsiveMargin" 
+				id = "oTableCreate"
 				>
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">

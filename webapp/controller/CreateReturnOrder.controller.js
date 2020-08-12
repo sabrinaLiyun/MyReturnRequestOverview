@@ -2,11 +2,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./utilities",
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, History) {
+], function (BaseController, MessageBox, Utilities, History) {
 	"use strict";
 
 	return BaseController.extend("SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.CreateReturnOrder", {
-		handleRouteMatched: function(oEvent) {
+		handleRouteMatched: function (oEvent) {
 			var sAppId = "App5f155bcb6d338e01cd7c2169";
 
 			var oParams = {};
@@ -16,7 +16,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			} else {
 				if (this.getOwnerComponent().getComponentData()) {
-					var patternConvert = function(oParam) {
+					var patternConvert = function (oParam) {
 						if (Object.keys(oParam).length !== 0) {
 							for (var prop in oParam) {
 								if (prop !== "sourcePrototype" && prop.includes("Set")) {
@@ -42,7 +42,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 
 		},
-		_onPageNavButtonPress: function() {
+		_onPageNavButtonPress: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 			var oQueryParams = this.getQueryParameters(window.location);
@@ -55,7 +55,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 
 		},
-		getQueryParameters: function(oLocation) {
+		getQueryParameters: function (oLocation) {
 			var oQuery = {};
 			var aParams = oLocation.search.substring(1).split("&");
 			for (var i = 0; i < aParams.length; i++) {
@@ -65,8 +65,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			return oQuery;
 
 		},
-		_onButtonPress: function() {
-			return new Promise(function(fnResolve) {
+		_onButtonPress: function () {
+			return new Promise(function (fnResolve) {
 				var sTargetPos = "center center";
 				sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;
 				sap.m.MessageToast.show("Return Order was created successfully", {
@@ -75,30 +75,30 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					at: sTargetPos,
 					my: sTargetPos
 				});
-			}).catch(function(err) {
+			}).catch(function (err) {
 				if (err !== undefined) {
 					MessageBox.error(err.message);
 				}
 			});
 
 		},
-		_onButtonPress1: function() {
-			return new Promise(function(fnResolve) {
+		_onButtonPress1: function () {
+			return new Promise(function (fnResolve) {
 				sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
 					title: "Cancel",
 					actions: ["Yes", "No"],
-					onClose: function(sActionClicked) {
+					onClose: function (sActionClicked) {
 						fnResolve(sActionClicked === "Yes");
 					}
 				});
-			}).catch(function(err) {
+			}).catch(function (err) {
 				if (err !== undefined) {
 					MessageBox.error(err);
 				}
 			});
 
 		},
-		onInit: function() {
+		onInit: function () {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("TargetCreateReturnOrder").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 
@@ -153,6 +153,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 
 		onAdd: function (oEvent) {
+			var oItemTemplate = new sap.ui.core.ListItem({text:"{zreturn>/ReturnReasonText}"});
 			var oItem = new sap.m.ColumnListItem({
 				cells: [new sap.m.Input(),
 					new sap.m.Label({
@@ -163,13 +164,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						text: "PC"
 					}),
 					new sap.m.ComboBox({
+
+						items: {
+							path: "zreturn>/CustomerReturnItem", //no curly brackets here!
+						    template: oItemTemplate
+						}
 						//items: "{zreturn>/ReturnReasonText}"
-							// items: "{path: '{zreturn>/ReturnReasonText}'}"
-							// , 
-							// template: new sap.ui.core.ListItem({text: "{zreturn>ReturnReasonName}", 
-							//                                      key: "{zreturn>ReturnReason}"
-							//                                      }) 
-							// 
+						// items: "{path: '{zreturn>/ReturnReasonText}'}"
+						// , 
+						// template: new sap.ui.core.ListItem({text: "{zreturn>ReturnReasonName}", 
+						//                                      key: "{zreturn>ReturnReason}"
+						//                                      }) 
+						// 
 					}),
 					new sap.m.ComboBox(
 						// {key: "{zreturn>ReturnsRefundType}", text: "{zreturn>RefundTypeDescription}"}

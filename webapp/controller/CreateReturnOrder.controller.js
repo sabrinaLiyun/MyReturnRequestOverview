@@ -153,7 +153,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 
 		onAdd: function (oEvent) {
-			var oItemTemplate = new sap.ui.core.ListItem({text:"{zreturn>/ReturnReasonText}"});
+			//var oItemTemplate = new sap.ui.core.ListItem({text:"{zreturn>ReturnReasonName}"});
+
 			var oItem = new sap.m.ColumnListItem({
 				cells: [new sap.m.Input(),
 					new sap.m.Label({
@@ -164,22 +165,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						text: "PC"
 					}),
 					new sap.m.ComboBox({
-
 						items: {
-							path: "zreturn>/CustomerReturnItem", //no curly brackets here!
-						    template: oItemTemplate
+							path: "zreturn>/ReturnReasonText",
+							template: new sap.ui.core.Item({
+								key: "{zreturn>ReturnReasonName}",
+								text: "{zreturn>ReturnReasonName}"
+							})
 						}
-						//items: "{zreturn>/ReturnReasonText}"
-						// items: "{path: '{zreturn>/ReturnReasonText}'}"
-						// , 
-						// template: new sap.ui.core.ListItem({text: "{zreturn>ReturnReasonName}", 
-						//                                      key: "{zreturn>ReturnReason}"
-						//                                      }) 
-						// 
 					}),
-					new sap.m.ComboBox(
-						// {key: "{zreturn>ReturnsRefundType}", text: "{zreturn>RefundTypeDescription}"}
-					)
+					new sap.m.ComboBox({
+						items: {
+							path: "zreturn>/RefundTypeText",
+							template: new sap.ui.core.Item({
+								key: "{zreturn>ReturnsRefundType}",
+								text: "{zreturn>RefundTypeDescription}"
+							})
+						}
+					})
+
 				]
 			});
 			var oTable = this.getView().byId("oTableCreate");

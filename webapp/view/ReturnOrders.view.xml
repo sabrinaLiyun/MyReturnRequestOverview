@@ -21,28 +21,28 @@
 						<filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" search="onSearch">
 							<filterbar:filterItems>
 								<filterbar:FilterItem label="Return Order"
-									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem">
+									name="ReturnOrderFilter">
 									<filterbar:control>
 											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Customer Return Order"></SearchField>
 									</filterbar:control>
 								</filterbar:FilterItem>
 								
 								<filterbar:FilterItem label="Creation Date" id="datePCreateDate"
-									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556875050---0">
+									name="CreationDateFilter">
 									<filterbar:control>
 										<DatePicker width="auto" id="datePCreateDatep" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true"
 											visible="true" valueFormat="yyyyMMdd"/>
 									</filterbar:control>
 								</filterbar:FilterItem>
 								<filterbar:FilterItem label="Response Date"
-									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1595556941578---0">
+									name="ResponseDateFilter">
 									<filterbar:control>
 										<DatePicker width="auto" displayFormat="medium" id="datePResponseDate" required="false" valueStateText="Invalid entry" enabled="true"
 											visible="true" valueFormat="yyyyMMdd"/>
 									</filterbar:control>
 								</filterbar:FilterItem>
 								<filterbar:FilterItem label="Status"
-									name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-Fiori_ListReport_ComboBoxFilter-1595557051832---0">
+									name="StatusFilter">
 									<filterbar:control>
 										<MultiComboBox id="comboApprovalSta">
 											<items>

@@ -104,61 +104,66 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		onSave: function () {
-			var so = {
-				"CustomerReturnType": "YRE2",
-				"SalesOrganization": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(0, 4),
-				"DistributionChannel": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(5, 7),
-				"OrganizationDivision": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(8, 10),
-				"SoldToParty": this.byId("Combox_CustomerID").getSelectedItem().getText(),
-				"SDDocumentReason": "001",
-				"to_Item": {
-					"results": [{
-							"Material": this.byId("Material1").getValue(),
-							"RequestedQuantity": this.byId("Quantity1").getValue(),
-							"ReturnReason": this.byId("ComboBoxReturnReason1").getSelectedKey(),
-							"ReturnsRefundType": this.byId("ComboBoxRefundType1").getSelectedKey(),
-							"RetsMgmtProcessingBlock": "B"
-						}, {
-							"Material": this.byId("Material2").getValue(),
-							"RequestedQuantity": this.byId("Quantity2").getValue(),
-							"ReturnReason": this.byId("ComboBoxReturnReason2").getSelectedKey(),
-							"ReturnsRefundType": this.byId("ComboBoxRefundType2").getSelectedKey(),
-							"RetsMgmtProcessingBlock": "B"
-						}, {
-							"Material": this.byId("Material3").getValue(),
-							"RequestedQuantity": this.byId("Quantity3").getValue(),
-							"ReturnReason": this.byId("ComboBoxReturnReason3").getSelectedKey(),
-							"ReturnsRefundType": this.byId("ComboBoxRefundType3").getSelectedKey(),
-							"RetsMgmtProcessingBlock": "B"
-						}
-
-					]
-				}
-			};
-			this.oModel = this.getView().getModel("ZRETURN_SAP");
-			//var oModel = new sap.ui.model.odata.v2.ODataModel("http://rb3s4xa0.server.bosch.com:8066/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV");
-			this.oModel.create("/A_CustomerReturn", so, {
-				refreshAfterChange: true,
-				success: function (res) {
-					//console.log("success", res);
-					MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
-					this.getView().getModel().refresh();
-				},
-				error: function (res) {
-					//console.log("failed", res);
-					MessageBox.error("Create return order failed");
+			var c3Text;
+			var c4Text;
+			var c1, c2, c3, c4;
+			var items = this.byId("oTableCreate").getItems();
+			var aArray = [];
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+				c1 = item.getCells()[0].getValue();
+				c2 = item.getCells()[2].getValue();
+				c3 = item.getCells()[4].getSelectedKey();
+				c4 = item.getCells()[5].getSelectedKey();
+				c3Text = item.getCells()[4].getValue();
+				c4Text = item.getCells()[5].getValue();
+				if (c1 != "" && c2 != "" && c3Text != "" && c4Text != "") {
+					aArray.push({
+						"Material": c1,
+						"RequestedQuantity": c2,
+						"ReturnReason": c3,
+						"ReturnsRefundType": c4,
+						"RetsMgmtProcessingBlock": "B"
+					});
 				}
 
-			});
+			}
+			if (aArray == "") {
+				MessageBox.error("No items are filled");
+			} else {
+				var so = {
+					"CustomerReturnType": "YRE2",
+					"SalesOrganization": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(0, 4),
+					"DistributionChannel": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(5, 7),
+					"OrganizationDivision": this.byId("Combox_SalesAreaID").getSelectedItem().getText().substring(8, 10),
+					"SoldToParty": this.byId("Combox_CustomerID").getSelectedItem().getText(),
+					"SDDocumentReason": "001",
+					"to_Item": {
+						"results": aArray
+					}
+				};
+				this.oModel = this.getView().getModel("ZRETURN_SAP");
+				//var oModel = new sap.ui.model.odata.v2.ODataModel("http://rb3s4xa0.server.bosch.com:8066/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV");
+				this.oModel.create("/A_CustomerReturn", so, {
+					refreshAfterChange: true,
+					success: function (res) {
+						//console.log("success", res);
+						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
+						this.getView().getModel().refresh();
+					},
+					error: function (res) {
+						//console.log("failed", res);
+						MessageBox.error("Create return order failed");
+					}
+				});
+			}
 		},
 
 		onAdd: function (oEvent) {
-			//var oItemTemplate = new sap.ui.core.ListItem({text:"{zreturn>ReturnReasonName}"});
-
 			var oItem = new sap.m.ColumnListItem({
 				cells: [new sap.m.Input(),
 					new sap.m.Label({
-						text: "Fire"
+						text: ""
 					}),
 					new sap.m.Input(),
 					new sap.m.Label({
@@ -182,7 +187,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 							})
 						}
 					})
-
 				]
 			});
 			var oTable = this.getView().byId("oTableCreate");

@@ -40,7 +40,7 @@
             </form:Form>
 			<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20"
 				growingScrollToLoad="true" class="sapUiResponsiveMargin" 
-				id = "oTableCreate" items="{zreturn>/CustomerReturnItem}"
+				id = "oTableCreate" 
 				>
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -100,63 +100,190 @@
 				<items>
 					<ColumnListItem type="Active">
 						<cells>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Material1"/>
-							<Text text="eRacer V2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes1"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Quantity1"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="Unit1"/>
-							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason1" items="{zreturn>/ReturnReasonText}">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason1"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns="sap.m" id="ComboBoxRefundType1" items="{zreturn>/RefundTypeText}">
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType1"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
 								</items>
 							</ComboBox>
 						</cells>
 					</ColumnListItem>
 					<ColumnListItem type="Active">
 						<cells>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Material2"/>
-							<Text text="eRacer V2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes2"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Quantity2"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="Unit2"/>
-							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason2" items="{zreturn>/ReturnReasonText}">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason2"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns="sap.m" id="ComboBoxRefundType2" items="{zreturn>/RefundTypeText}">
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType2"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>					
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
 								</items>
 							</ComboBox>
 						</cells>
 					</ColumnListItem>
 					<ColumnListItem type="Active">
 						<cells>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Material3"/>
-							<Text text="eRacer V3" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="MaterialDes3"/>
-							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								id="Quantity3"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="text13_copy3"/>
-							<ComboBox xmlns="sap.m" id="ComboBoxReturnReason3" items="{zreturn>/ReturnReasonText}">
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}" id="itemReturnReason3"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
 								</items>
 							</ComboBox>
-							<ComboBox xmlns="sap.m" id="ComboBoxRefundType3" items="{zreturn>/RefundTypeText}">
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
 								<items>
-									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}" id="itemRefundType3"/>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
+								</items>
+							</ComboBox>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+								text="PC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns="sap.m" items="{zreturn>/RefundTypeText}">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnsRefundType}" text="{zreturn>RefundTypeDescription}"/>
 								</items>
 							</ComboBox>
 						</cells>

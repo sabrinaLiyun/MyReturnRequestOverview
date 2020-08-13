@@ -155,16 +155,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					success: function (res) {
 						//console.log("success", res);
 						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
+						//                  this.byId("Combox_CustomerID").setSelectedKey("");
+						// this.onClear();
+						//this.getView().getModel().refresh();
 
-						//this.getView().onClear();
-
-						this.getView().getModel().refresh();
 					},
 					error: function (res) {
 						//console.log("failed", res);
 						MessageBox.error("Create return order failed");
 					}
 				});
+				// this.getView().getModel().refresh();
+				this.onClear();
 			}
 		},
 

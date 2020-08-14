@@ -172,31 +172,36 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					success: function (res) {
 						//console.log("success", res);
 						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
-						this.getView().getModel().refresh();
+						//                  this.byId("Combox_CustomerID").setSelectedKey("");
+						// this.onClear();
+						//this.getView().getModel().refresh();
+
 					},
 					error: function (res) {
 						//console.log("failed", res);
 						MessageBox.error("Create return order failed");
 					}
 				});
+				// this.getView().getModel().refresh();
+				this.onClear();
 			}
 		},
 
 		onAdd: function (oEvent) {
 			var oItem = new sap.m.ColumnListItem({
 				cells: [new sap.m.Input(),
-					new sap.m.Label({
+					new sap.m.Text({
 						text: ""
 					}),
 					new sap.m.Input(),
-					new sap.m.Label({
+					new sap.m.Text({
 						text: "PC"
 					}),
 					new sap.m.ComboBox({
 						items: {
 							path: "zreturn>/ReturnReasonText",
 							template: new sap.ui.core.Item({
-								key: "{zreturn>ReturnReasonName}",
+								key: "{zreturn>ReturnReason}",
 								text: "{zreturn>ReturnReasonName}"
 							})
 						}
@@ -217,12 +222,55 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		onDelete: function (oEvent) {
 			var oTable = this.getView().byId("oTableCreate");
-			var sSelectItems = oTable.getSelectedItems();
-			var i = 0;
-			while (i < sSelectItems.length) {
-				oTable.removeItem(sSelectItems[i]);
-				i++;
+			return new Promise(function (fnResolve) {
+				sap.m.MessageBox.confirm("Do you want to delete it?", {
+					title: "Delete",
+					actions: ["Yes", "No"],
+					onClose: function (sActionClicked) {
+						if (sActionClicked === "Yes") {
+							var sSelectItems = oTable.getSelectedItems();
+							var i = 0;
+							while (i < sSelectItems.length) {
+								oTable.removeItem(sSelectItems[i]);
+								i++;
+							}
+						}
+					}
+				});
+			}).catch(function (err) {
+				if (err !== undefined) {
+					MessageBox.error(err);
+				}
+			});
+		},
+
+		onClear: function () {
+			this.byId("Combox_CustomerID").setSelectedKey("");
+			this.byId("Combox_SalesAreaID").setSelectedKey("");
+			var items = this.byId("oTableCreate").getItems();
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+
+				item.getCells()[0].setValue("");
+				item.getCells()[2].setValue("");
+				item.getCells()[4].setSelectedKey("");
+				item.getCells()[5].setSelectedKey("");
 			}
+		},
+
+		onTest: function (oEvent) {
+			this.byId("Combox_CustomerID").setSelectedKey("");
+			this.byId("Combox_SalesAreaID").setSelectedKey("");
+			var items = this.byId("oTableCreate").getItems();
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+
+				item.getCells()[0].setValue("");
+				item.getCells()[2].setValue("");
+				item.getCells()[4].setSelectedKey("");
+				item.getCells()[5].setSelectedKey("");
+			}
+
 		}
 	});
 }, /* bExport= */ true);

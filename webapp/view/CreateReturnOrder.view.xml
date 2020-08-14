@@ -51,7 +51,7 @@
 				<headerToolbar>
 					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
 						<content>
-							<Title text="Items (3)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+							<Title text="Items" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
 							<ToolbarSpacer width=""/>
 							<Button text="Add" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onAdd"/>
 							<Button text="Delete" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onDelete"/>

@@ -53,7 +53,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			oModel.read("/CustomerData", {
 				filters: afilters,
-				success: function (oData, response) {
+				success: function (oData) {
 					var data = oData.results[0];
 					var CustomerDes = data.CustomerName;
 						//	console.log(CustomerDes);

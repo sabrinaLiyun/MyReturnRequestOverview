@@ -14,10 +14,10 @@
 									<Label text="Customer number" design="Standard" width="200px" required="false" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<ComboBox id="Combox_CustomerID" width="400px" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }">
+									<ComboBox id="Combox_CustomerID" width="400px" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }"  selectionChange="_onComboChange">
 										<core:Item key="{zreturn>CusomterID}" text="{zreturn>CusomterID}"/>
 									</ComboBox>
-									<Text text="" width="600px" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="" id="Text1" width="600px" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
 								</form:fields>
 							</form:FormElement>
 							<form:FormElement visible="true">

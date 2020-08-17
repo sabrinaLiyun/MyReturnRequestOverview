@@ -1,0 +1,146 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap" xmlns="sap.m" controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.ReturnOrderItems">
+	<uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="false" class="sapUiSizeCompact">
+		<uxap:headerTitle>
+			<uxap:ObjectPageHeader objectTitle="Return Order {OrderResource>/OrderNo}" objectSubtitle="" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="true" objectImageURI="/build/uilibraries/content/static/image-canvas.svg">
+			
+				<uxap:navigationBar>
+					<Bar>
+						<contentLeft>
+							<Button type="Back" press="_onPageNavButtonPress"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text=""/>
+						</contentMiddle>
+						<contentRight/>
+					</Bar>
+				</uxap:navigationBar>
+					<ObjectStatus xmlns="sap.m" text="{OrderResource>/Status}" state="{path: 'OrderResource>/Status', formatter:'.formatAvailableToObjectState' }" icon="{path:'OrderResource>/Status', formatter: '.formatValudationSatus'}" visible="true" id="status1" textDirection="LTR"/>
+				<uxap:actions/>
+				<uxap:breadCrumbsLinks/>
+			</uxap:ObjectPageHeader>
+		</uxap:headerTitle>
+		<uxap:headerContent>
+			
+			<VBox alignContent="Start" justifyContent="Center" width="260px">
+				<items>
+					<HBox alignContent="End" width="250px">
+						<items>
+							<Label text="Customer Number：" width="140px" textDirection="LTR" textAlign="Left"/>
+							<ObjectStatus text="{OrderResource>/CustomerNo}"/>
+						</items>
+					</HBox>
+					<HBox width="250px">
+						<items>
+							<Label text="Sales Area：" width="140px" textDirection="RTL" textAlign="Left"/>
+							<ObjectStatus text="{OrderResource>/CustomerNo}/{OrderResource&gt;/DC}/{OrderResource>/Division}" textDirection="LTR"/>
+						</items>
+					</HBox>
+				</items>
+			</VBox>
+			<Text text="{OrderResource>/CustName}" width="300px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+			<VBox alignContent="End" width="500px">
+				<items>
+					<HBox>
+						<items>
+							<Label text="Creation Date：" width="120px" textDirection="LTR" textAlign="Left"/>
+							<ObjectStatus text="{path: 'OrderResource>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"/>
+						</items>
+						
+					</HBox>
+					<HBox>
+						<items>
+							<Label text="Response Date：" width="120px" textDirection="LTR" textAlign="Left"/>
+							<ObjectStatus text="{path: 'OrderResource>/ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd'}}"/>
+						</items>
+					</HBox>
+				</items>
+			</VBox>
+		</uxap:headerContent>
+		<uxap:sections>
+			<uxap:ObjectPageSection>
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Item Info">
+						<uxap:blocks>
+							<Table id="idItemTable" width="auto" noDataText="No data" mode="None" items="{zreturn>/CustomerReturnItem}" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" updateFinished="_onFioriListReportTableUpdateFinished" class="sapUiResponsiveMargin">
+								<infoToolbar>
+									<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+										<content>
+											<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</content>
+									</Toolbar>
+								</infoToolbar>
+								<headerToolbar>
+									<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+										<content>
+											<Title text="Items" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+											<Title text="(1)"/>
+											<ToolbarSpacer width=""/>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Material Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Unit" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Return Reason" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Refund Type" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<Text text="{zreturn>Material}"/>
+											<Text text="{zreturn>MaterialByCustomer}"/>
+											<Text text="{zreturn>RequestedQuantity}"/>
+											<Text text="{zreturn>RequestedQuantityUnit}"/>
+											<ObjectStatus text="{zreturn>ReturnReasonName}"/>
+											<ObjectStatus text="{zreturn>RefundTypeDescription}"/>
+											<ObjectStatus id="ApprovalStatus" text="{zreturn>ApprovalStatusDesc}" state="{path: 'zreturn>ApprovalStatusDesc', formatter:'.formatAvailableToObjectState' }"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+		<uxap:footer/>
+	</uxap:ObjectPageLayout>
+</mvc:View>

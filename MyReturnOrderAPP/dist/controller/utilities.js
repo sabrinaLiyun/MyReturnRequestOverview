@@ -1,0 +1,1 @@
+sap.ui.define(["./utilities"],function(){"use strict";return{}});

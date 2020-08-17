@@ -1,0 +1,1 @@
+sap.ui.define(["SAPUI5MyReturnOrder/MyReturnOrderAPP/controller/ReturnOrders.controller"],function(r){"use strict";QUnit.module("ReturnOrders Controller");QUnit.test("I should test the ReturnOrders controller",function(e){var t=new r;t.onInit();e.ok(t)})});

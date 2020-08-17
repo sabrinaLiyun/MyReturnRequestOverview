@@ -15,3 +15,8 @@ AppVariantPreviewPayload.zip
 mergedManifestDescriptor.json
 APIExternalProducer.js
 .*/APIExternalProducer.js
+/MyReturnOrderAPP/node_modules/
+/resources/
+/mta-myreturnorderapp-approuter/node_modules/
+/mta_MyReturnOrderAPP_ui_deployer/node_modules/
+/mta_MyReturnOrderAPP_ui_deployer/resources/

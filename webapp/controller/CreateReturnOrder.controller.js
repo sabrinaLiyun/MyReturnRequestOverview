@@ -132,6 +132,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var c1, c2, c3, c4;
 			var items = this.byId("oTableCreate").getItems();
 			var aArray = [];
+			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
+			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
+			if (!sCustomerNo){
+				this.byId("Combox_CustomerID").setValueState("Error");
+				this.byId("Combox_CustomerID").setValueStateText("Please enter a valid country!");
+				return;
+			} else {
+				this.byId("Combox_CustomerID").setValueState("None");				
+			}
+			if (!sSalesArea){
+				this.byId("Combox_SalesAreaID").setValueState("Error");
+				this.byId("Combox_SalesAreaID").setValueStateText("Please enter a valid country!");				
+				return;
+			} else {
+				this.byId("Combox_SalesAreaID").setValueState("None");					
+			}
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
 				c1 = item.getCells()[0].getValue();
@@ -175,15 +191,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						//                  this.byId("Combox_CustomerID").setSelectedKey("");
 						// this.onClear();
 						//this.getView().getModel().refresh();
-
-					},
+                        this.onClear();
+					}.bind(this),
 					error: function (res) {
 						//console.log("failed", res);
 						MessageBox.error("Create return order failed");
-					}
+					}.bind(this)
 				});
 				// this.getView().getModel().refresh();
-				this.onClear();
+				//this.onClear();
 			}
 		},
 
@@ -201,7 +217,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}),
 					new sap.m.Input(),
 					new sap.m.Text({
-						text: "PC"
+						text: ""
 					}),
 					new sap.m.ComboBox({
 						items: {

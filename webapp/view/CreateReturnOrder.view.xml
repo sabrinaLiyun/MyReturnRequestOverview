@@ -11,7 +11,7 @@
 						<form:formElements>
 							<form:FormElement visible="true">
 								<form:label>
-									<Label text="Customer number" design="Standard" width="200px" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
+									<Label text="Customer number" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
 									<ComboBox id="Combox_CustomerID" width="auto" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }" selectionChange="_onComboChange">
@@ -25,7 +25,7 @@
 							</form:FormElement>
 							<form:FormElement visible="true">
 								<form:label>
-									<Label text="Sales Area" design="Standard" width="200px" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
+									<Label text="Sales Area" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
 									<ComboBox id="Combox_SalesAreaID" width="auto" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'SalesOrg' } }">

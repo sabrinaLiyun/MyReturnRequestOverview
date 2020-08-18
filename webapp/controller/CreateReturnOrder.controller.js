@@ -112,6 +112,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					actions: ["Yes", "No"],
 					onClose: function (sActionClicked) {
 						fnResolve(sActionClicked === "Yes");
+						if (sActionClicked === "Yes") {
+							window.history.go(-1);
+						}
+
 					}
 				});
 			}).catch(function (err) {
@@ -134,19 +138,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var aArray = [];
 			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
 			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
-			if (!sCustomerNo){
+			if (!sCustomerNo) {
 				this.byId("Combox_CustomerID").setValueState("Error");
 				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
 				return;
 			} else {
-				this.byId("Combox_CustomerID").setValueState("None");				
+				this.byId("Combox_CustomerID").setValueState("None");
 			}
-			if (!sSalesArea){
+			if (!sSalesArea) {
 				this.byId("Combox_SalesAreaID").setValueState("Error");
-				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");				
+				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");
 				return;
 			} else {
-				this.byId("Combox_SalesAreaID").setValueState("None");					
+				this.byId("Combox_SalesAreaID").setValueState("None");
 			}
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
@@ -183,25 +187,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.oModel = this.getView().getModel("ZRETURN_SAP");
 				this.byId("oTableCreate").setBusy(true);
-				//var oModel = new sap.ui.model.odata.v2.ODataModel("http://rb3s4xa0.server.bosch.com:8066/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV");
 				this.oModel.create("/A_CustomerReturn", so, {
 					refreshAfterChange: true,
 					success: function (res) {
-						//console.log("success", res);
 						this.byId("oTableCreate").setBusy(false);
 						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
-						//                  this.byId("Combox_CustomerID").setSelectedKey("");
-						// this.onClear();
-						//this.getView().getModel().refresh();
-                        this.onClear();
+						this.onClear();
 					}.bind(this),
 					error: function (res) {
-						//console.log("failed", res);
 						MessageBox.error("Create return order failed");
-					}.bind(this)
+					}
 				});
-				// this.getView().getModel().refresh();
-				//this.onClear();
 			}
 		},
 

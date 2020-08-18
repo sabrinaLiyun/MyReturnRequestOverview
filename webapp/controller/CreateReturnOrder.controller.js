@@ -136,14 +136,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
 			if (!sCustomerNo){
 				this.byId("Combox_CustomerID").setValueState("Error");
-				this.byId("Combox_CustomerID").setValueStateText("Please enter a valid country!");
+				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
 				return;
 			} else {
 				this.byId("Combox_CustomerID").setValueState("None");				
 			}
 			if (!sSalesArea){
 				this.byId("Combox_SalesAreaID").setValueState("Error");
-				this.byId("Combox_SalesAreaID").setValueStateText("Please enter a valid country!");				
+				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");				
 				return;
 			} else {
 				this.byId("Combox_SalesAreaID").setValueState("None");					
@@ -182,11 +182,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}
 				};
 				this.oModel = this.getView().getModel("ZRETURN_SAP");
+				this.byId("oTableCreate").setBusy(true);
 				//var oModel = new sap.ui.model.odata.v2.ODataModel("http://rb3s4xa0.server.bosch.com:8066/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV");
 				this.oModel.create("/A_CustomerReturn", so, {
 					refreshAfterChange: true,
 					success: function (res) {
 						//console.log("success", res);
+						this.byId("oTableCreate").setBusy(false);
 						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
 						//                  this.byId("Combox_CustomerID").setSelectedKey("");
 						// this.onClear();
@@ -269,6 +271,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		onClear: function () {
 			this.byId("Combox_CustomerID").setSelectedKey("");
 			this.byId("Combox_SalesAreaID").setSelectedKey("");
+			this.byId("Text1").setText("");
 			var items = this.byId("oTableCreate").getItems();
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];

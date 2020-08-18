@@ -1,5 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap" xmlns="sap.m"
 	controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.ReturnOrderItems">
+	
 			<uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="false"
 				class="sapUiSizeCompact">
 				<uxap:headerTitle>
@@ -12,7 +13,7 @@
 									<Button type="Back" press="_onPageNavButtonPress"/>
 								</contentLeft>
 								<contentMiddle>
-									<Title text=""/>
+									<Title text="My Return Order"/>
 								</contentMiddle>
 								<contentRight/>
 							</Bar>
@@ -20,8 +21,6 @@
 						<ObjectStatus xmlns="sap.m" text="{OrderResource>/Status}"
 							state="{path: 'OrderResource>/Status', formatter:'.formatAvailableToObjectState' }"
 							icon="{path:'OrderResource>/Status', formatter: '.formatValudationSatus'}" visible="true" id="status1" textDirection="LTR"/>
-						<uxap:actions/>
-						<uxap:breadCrumbsLinks/>
 					</uxap:ObjectPageHeader>
 				</uxap:headerTitle>
 				<uxap:headerContent>
@@ -60,9 +59,9 @@
 					</VBox>
 				</uxap:headerContent>
 				<uxap:sections>
-					<uxap:ObjectPageSection title="">
+					<uxap:ObjectPageSection showTitle="false">
 						<uxap:subSections>
-							<uxap:ObjectPageSubSection title="">
+							<uxap:ObjectPageSubSection title="Hidden Title">
 								<uxap:blocks>
 									<Table id="idItemTable" width="100%" mode="None" items="{zreturn>/CustomerReturnItem}" growing="true" growingThreshold="25"
 										growingScrollToLoad="true" updateFinished="_onFioriListReportTableUpdateFinished">
@@ -141,5 +140,5 @@
 				</uxap:sections>
 				<uxap:footer/>
 			</uxap:ObjectPageLayout>
-
+	
 </mvc:View>

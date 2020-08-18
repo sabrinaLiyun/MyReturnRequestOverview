@@ -56,7 +56,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				success: function (oData) {
 					var data = oData.results[0];
 					var CustomerDes = data.CustomerName;
-						//	console.log(CustomerDes);
+					//	console.log(CustomerDes);
 					this.getView().byId("Text1").setText(CustomerDes);
 
 				}.bind(this)
@@ -132,6 +132,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var c1, c2, c3, c4;
 			var items = this.byId("oTableCreate").getItems();
 			var aArray = [];
+			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
+			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
+			if (!sCustomerNo){
+				this.byId("Combox_CustomerID").setValueState("Error");
+				this.byId("Combox_CustomerID").setValueStateText("Please enter a valid country!");
+				return;
+			} else {
+				this.byId("Combox_CustomerID").setValueState("None");				
+			}
+			if (!sSalesArea){
+				this.byId("Combox_SalesAreaID").setValueState("Error");
+				this.byId("Combox_SalesAreaID").setValueStateText("Please enter a valid country!");				
+				return;
+			} else {
+				this.byId("Combox_SalesAreaID").setValueState("None");					
+			}
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
 				c1 = item.getCells()[0].getValue();
@@ -175,27 +191,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						//                  this.byId("Combox_CustomerID").setSelectedKey("");
 						// this.onClear();
 						//this.getView().getModel().refresh();
-
-					},
+                        this.onClear();
+					}.bind(this),
 					error: function (res) {
 						//console.log("failed", res);
 						MessageBox.error("Create return order failed");
-					}
+					}.bind(this)
 				});
 				// this.getView().getModel().refresh();
-				this.onClear();
+				//this.onClear();
 			}
 		},
 
 		onAdd: function (oEvent) {
+			var that = this;
 			var oItem = new sap.m.ColumnListItem({
-				cells: [new sap.m.Input(),
+				cells: [
+					new sap.m.Input({
+						change: function (oEvent) {
+							that.onEnter(oEvent);
+						}
+					}),
 					new sap.m.Text({
 						text: ""
 					}),
 					new sap.m.Input(),
 					new sap.m.Text({
-						text: "PC"
+						text: ""
 					}),
 					new sap.m.ComboBox({
 						items: {
@@ -252,7 +274,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				var item = items[i];
 
 				item.getCells()[0].setValue("");
+				item.getCells()[1].setText("");
 				item.getCells()[2].setValue("");
+				item.getCells()[3].setText("");
 				item.getCells()[4].setSelectedKey("");
 				item.getCells()[5].setSelectedKey("");
 			}
@@ -271,6 +295,37 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				item.getCells()[5].setSelectedKey("");
 			}
 
+		},
+		onEnter: function (oEvent) {
+			var oRow = oEvent.getSource().getParent();
+			var aCells = oRow.getCells();
+			var afilters = [];
+			var oModel = this.getView().getModel();
+			var mDes;
+			var cMaterial = aCells[0].getValue();
+			if (cMaterial != "") {
+				afilters.push(
+					new sap.ui.model.Filter({
+						filters: [
+							new sap.ui.model.Filter("Material", sap.ui.model.FilterOperator.EQ, cMaterial),
+							new sap.ui.model.Filter("Language", sap.ui.model.FilterOperator.EQ, "EN")
+						],
+						and: true
+					})
+				);
+				oModel.read("/MaterialDescription", {
+					filters: afilters,
+					success: function (oData, response) {
+						var data = oData.results[0];
+						mDes = data.MaterialName;
+						aCells[1].setText(mDes);
+					},
+					error: function (oErr) {
+						this.console.log("Failed");
+					}
+				});
+				aCells[3].setText("PC");
+			}
 		}
 	});
 }, /* bExport= */ true);

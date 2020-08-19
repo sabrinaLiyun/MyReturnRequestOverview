@@ -122,7 +122,7 @@
 											<ColumnListItem type="Active">
 												<cells>
 													<Text text="{zreturn>Material}"/>
-													<Text text="{zreturn>MaterialByCustomer}"/>
+													<Text text="{zreturn>CustomerReturnItemText}"/>
 													<Text text="{zreturn>RequestedQuantity}"/>
 													<Text text="{zreturn>RequestedQuantityUnit}"/>
 													<ObjectStatus text="{zreturn>ReturnReasonName}"/>

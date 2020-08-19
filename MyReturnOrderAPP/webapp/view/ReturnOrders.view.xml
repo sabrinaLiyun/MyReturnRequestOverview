@@ -4,7 +4,7 @@
 	<App id="ReturnOrder">
 		<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
 			<f:title>
-				<f:DynamicPageTitle>
+				<f:DynamicPageTitle title="My Return Order">
 					<f:heading>
 						<variants:VariantManagement/>
 					</f:heading>
@@ -23,7 +23,7 @@
 								<filterbar:FilterItem label="Return Order"
 									name="ReturnOrderFilter">
 									<filterbar:control>
-											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Customer Return Order"></SearchField>
+											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Return Order"></SearchField>
 									</filterbar:control>
 								</filterbar:FilterItem>
 								

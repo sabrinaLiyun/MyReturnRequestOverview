@@ -28,13 +28,13 @@
 						<items>
 							<HBox alignContent="End" width="250px">
 								<items>
-									<Label text="Customer Number：" width="140px" textDirection="LTR" textAlign="Left"/>
+									<Label text="{i18n>ItemsPageCustomerNumber}：" width="140px" textDirection="LTR" textAlign="Left"/>
 									<ObjectStatus text="{OrderResource>/CustomerNo}"/>
 								</items>
 							</HBox>
 							<HBox width="250px">
 								<items>
-									<Label text="Sales Area：" width="140px" textDirection="RTL" textAlign="Left"/>
+									<Label text="{i18n>ItemsPageSalesArea}：" width="140px" textDirection="RTL" textAlign="Left"/>
 									<ObjectStatus text="{OrderResource>/CustomerNo}/{OrderResource&gt;/DC}/{OrderResource>/Division}" textDirection="LTR"/>
 								</items>
 							</HBox>
@@ -45,13 +45,13 @@
 						<items>
 							<HBox>
 								<items>
-									<Label text="Creation Date：" width="120px" textDirection="LTR" textAlign="Left"/>
+									<Label text="{i18n>ItemsPageCreationDate}：" width="120px" textDirection="LTR" textAlign="Left"/>
 									<ObjectStatus text="{path: 'OrderResource>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"/>
 								</items>
 							</HBox>
 							<HBox>
 								<items>
-									<Label text="Response Date：" width="120px" textDirection="LTR" textAlign="Left"/>
+									<Label text="{i18n>ItemsPageResponseDate}：" width="120px" textDirection="LTR" textAlign="Left"/>
 									<ObjectStatus text="{path: 'OrderResource>/ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd'}}"/>
 								</items>
 							</HBox>
@@ -77,43 +77,43 @@
 										<columns>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Material Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnMaterialNo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnMaterialDes}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnQuantity}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Unit" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnUnit}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Return Reason" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnReturnReason}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Refund Type" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnRefundType}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>
 											<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 												<header>
-													<Text text="Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													<Text text="{i18n>ItemsPageColumnStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 												</header>
 												<footer/>
 											</Column>

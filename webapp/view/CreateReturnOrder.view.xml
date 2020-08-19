@@ -1,27 +1,22 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
-	controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.CreateReturnOrder">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.CreateReturnOrder">
 	<Page showHeader="true" title="Create New Return Order" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress" class="sapUisizecompact">
 		<content>
 			<form:Form width="100%" editable="true" visible="true">
 				<form:title>
 					<core:Title text="Header" level="Auto"/>
 				</form:title>
-				<form:formContainers>
-					<form:FormContainer visible="true">
+				<form:formContainers><form:FormContainer visible="true" expandable="true">
 						<form:formElements>
 							<form:FormElement visible="true">
 								<form:label>
 									<Label text="Customer number" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<ComboBox id="Combox_CustomerID" width="auto" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }" selectionChange="_onComboChange">
+									<ComboBox id="Combox_CustomerID" width="auto" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }" selectionChange="_onComboChange" required="true">
 										<core:Item key="{zreturn>CusomterID}" text="{zreturn>CusomterID}"/>
 									</ComboBox>
+									<Text text="" id="Text1" width="200px" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
 								</form:fields>
-								
-									<Text text="" id="Text1" width="100%" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-							
-								
 							</form:FormElement>
 							<form:FormElement visible="true">
 								<form:label>
@@ -32,14 +27,18 @@
 										<core:Item key="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}" text="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}"/>
 									</ComboBox>
 								</form:fields>
-								<Text text="" width="100%" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								<Text text="" width="200px" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							</form:FormElement>
 						</form:formElements>
 						<form:title/>
 					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements/>
+						<form:title/>
+					</form:FormContainer>
 				</form:formContainers>
 				<form:layout>
-					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="3" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+					<form:ResponsiveGridLayout adjustLabelSpan="true" columnsL="2" labelSpanL="4" columnsM="1" labelSpanM="2" labelSpanS="12" singleContainerFullSize="false"/>
 				</form:layout>
 			</form:Form>
 			<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" id="oTableCreate">
@@ -63,7 +62,7 @@
 				<columns>
 					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
 						<header>
-							<Text text="Material Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="{i18n>ItemsPageColumnMaterialNo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 						</header>
 						<footer/>
 					</Column>
@@ -104,8 +103,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -123,8 +121,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -142,8 +139,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -161,8 +157,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -180,8 +175,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -199,8 +193,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -218,8 +211,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -237,8 +229,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -256,8 +247,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
@@ -275,8 +265,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" submit="onEnter"/>
 							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
-							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
-								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>

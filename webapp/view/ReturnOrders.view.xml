@@ -4,7 +4,7 @@
 	<App id="ReturnOrder">
 		<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
 			<f:title>
-				<f:DynamicPageTitle>
+				<f:DynamicPageTitle title="My Return Order">
 					<f:heading>
 						<variants:VariantManagement/>
 					</f:heading>

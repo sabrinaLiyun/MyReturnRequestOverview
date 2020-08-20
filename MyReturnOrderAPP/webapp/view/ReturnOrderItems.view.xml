@@ -46,13 +46,13 @@
 							<HBox>
 								<items>
 									<Label text="{i18n>ItemsPageCreationDate}：" width="120px" textDirection="LTR" textAlign="Left"/>
-									<ObjectStatus text="{path: 'OrderResource>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd' }}"/>
+									<ObjectStatus text="{path: 'OrderResource>/CreationDate'}"/>
 								</items>
 							</HBox>
 							<HBox>
 								<items>
 									<Label text="{i18n>ItemsPageResponseDate}：" width="120px" textDirection="LTR" textAlign="Left"/>
-									<ObjectStatus text="{path: 'OrderResource>/ResponseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy/MM/dd'}}"/>
+									<ObjectStatus text="{path: 'OrderResource>/ResponseDate'}"/>
 								</items>
 							</HBox>
 						</items>
@@ -122,7 +122,7 @@
 											<ColumnListItem type="Active">
 												<cells>
 													<Text text="{zreturn>Material}"/>
-													<Text text="{zreturn>MaterialByCustomer}"/>
+													<Text text="{zreturn>CustomerReturnItemText}"/>
 													<Text text="{zreturn>RequestedQuantity}"/>
 													<Text text="{zreturn>RequestedQuantityUnit}"/>
 													<ObjectStatus text="{zreturn>ReturnReasonName}"/>

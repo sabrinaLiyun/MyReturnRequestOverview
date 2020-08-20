@@ -44,6 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 
 		_onComboChange: function (event) {
+
 			var oCustomerCode = event.getParameter("selectedItem").getKey();
 			var afilters = [];
 			afilters.push(new sap.ui.model.Filter("Customer",
@@ -65,16 +66,51 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 
+		onHandleChange: function (oEvent) {
+			var oValidatedComboBox = oEvent.getSource(),
+				sSelectedKey = oValidatedComboBox.getSelectedKey(),
+				sValue = oValidatedComboBox.getValue();
+			if (!sSelectedKey && sValue) {
+				oValidatedComboBox.setValueState("Error");
+				oValidatedComboBox.setValueStateText("Please select valid value!");
+			} else {
+				oValidatedComboBox.setValueState("None");
+			}
+		},
+		onHandleChangeSpecial: function (oEvent) {
+			var oValidatedComboBox = oEvent.getSource(),
+				sSelectedKey = oValidatedComboBox.getSelectedKey(),
+				sValue = oValidatedComboBox.getValue();
+			if (sValue === "Credit Memo") {
+				oValidatedComboBox.setValueState("None");
+			} else if (!sSelectedKey && sValue) {
+				oValidatedComboBox.setValueState("Error");
+				oValidatedComboBox.setValueStateText("Please select valid value!");
+			} else {
+				oValidatedComboBox.setValueState("None");
+			}
+		},
+		_onComboChangeSalesArea: function (event) {
+			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
+			if (!sSalesArea) {
+				this.byId("Combox_SalesAreaID").setValueState("Error");
+				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");
+				return;
+			} else {
+				this.byId("Combox_SalesAreaID").setValueState("None");
+			}
+		},
 		_onPageNavButtonPress: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 			var oQueryParams = this.getQueryParameters(window.location);
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
+				this.onClear();
 				window.history.go(-1);
 			} else {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("default", true);
+				oRouter.navTo("RouteReturnOrders", true);
 			}
 
 		},
@@ -106,16 +142,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onButtonPress1: function () {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			var that = this;
 			return new Promise(function (fnResolve) {
 				sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
 					title: "Cancel",
 					actions: ["Yes", "No"],
 					onClose: function (sActionClicked) {
-						fnResolve(sActionClicked === "Yes");
+						//fnResolve(sActionClicked === "Yes");
 						if (sActionClicked === "Yes") {
-							window.history.go(-1);
+							that.onClear();
+							//window.history.go(-1);
+							oRouter.navTo("RouteReturnOrders", true);
 						}
-
 					}
 				});
 			}).catch(function (err) {
@@ -138,22 +177,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var aArray = [];
 			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
 			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
-			var sErrorInput;
+			var sErrorInput = "No";
 			if (!sCustomerNo) {
 				this.byId("Combox_CustomerID").setValueState("Error");
 				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
-				return;
+				sErrorInput = "Yes";
 			} else {
 				this.byId("Combox_CustomerID").setValueState("None");
 			}
 			if (!sSalesArea) {
 				this.byId("Combox_SalesAreaID").setValueState("Error");
 				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");
-				return;
+				sErrorInput = "Yes";
 			} else {
 				this.byId("Combox_SalesAreaID").setValueState("None");
 			}
-			sErrorInput = "No";
+			if (sErrorInput === "Yes") {
+				return;
+			}
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
 				c1 = item.getCells()[0].getValue();
@@ -268,6 +309,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 								key: "{zreturn>ReturnReason}",
 								text: "{zreturn>ReturnReasonName}"
 							})
+						},
+						change: function (oEvent) {
+							that.onHandleChange(oEvent);
 						}
 					}),
 					new sap.m.ComboBox({
@@ -277,6 +321,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 								key: "{zreturn>ReturnsRefundType}",
 								text: "{zreturn>RefundTypeDescription}"
 							})
+						},
+						change: function (oEvent) {
+							that.onHandleChangeSpecial(oEvent);
 						}
 					})
 				]
@@ -322,7 +369,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				item.getCells()[3].setText("");
 				item.getCells()[4].setSelectedKey("");
 				item.getCells()[5].setSelectedKey("");
+				item.getCells()[0].setValueState("None");
+				item.getCells()[2].setValueState("None");
+				item.getCells()[4].setValueState("None");
+				item.getCells()[5].setValueState("None");
 			}
+			this.byId("Combox_CustomerID").setValueState("None");
+			this.byId("Combox_SalesAreaID").setValueState("None");
 		},
 
 		onTest: function (oEvent) {

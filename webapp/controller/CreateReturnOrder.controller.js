@@ -241,9 +241,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					// First selected line has blank key
 					item.getCells()[5].setValueState("None");
 				}
-				if (sErrorInput == "Yes") {
-					return;
-				}
 				if (c1 != "" && c2 != "" && c3Text != "" && c4Text != "") {
 					aArray.push({
 						"Material": c1,
@@ -253,6 +250,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						"RetsMgmtProcessingBlock": "B"
 					});
 				}
+			}
+			if (sErrorInput == "Yes") {
+				return;
 			}
 			if (aArray == "") {
 				MessageBox.error("No items are filled");
@@ -413,14 +413,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					filters: afilters,
 					success: function (oData, response) {
 						var data = oData.results[0];
-						mDes = data.MaterialName;
-						aCells[1].setText(mDes);
+						if (typeof data !== "undefined") {
+							mDes = data.MaterialName;
+							aCells[1].setText(mDes);
+							aCells[3].setText("PC");
+							aCells[0].setValueState("None");
+						} else {
+							aCells[0].setValueState("Error");
+							aCells[0].setValueStateText("Please valid value!");
+							aCells[1].setText("");
+							aCells[3].setText("");
+						}
 					},
 					error: function (oErr) {
-						this.console.log("Failed");
+						this.console.log("Material read failed");
+						aCells[0].setValueState("Error");
+						aCells[0].setValueStateText("Please valid value!");
 					}
 				});
-				aCells[3].setText("PC");
+			} 
+			else{
+							aCells[0].setValueState("None");				
 			}
 		}
 	});

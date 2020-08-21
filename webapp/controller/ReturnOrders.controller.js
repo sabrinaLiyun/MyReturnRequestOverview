@@ -44,6 +44,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			
+			this.onSearch();
 
 		},
 		_onFioriListReportTableItemPress: function(oEvent) {

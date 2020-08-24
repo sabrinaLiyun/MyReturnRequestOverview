@@ -107,6 +107,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
 				this.onClear();
+
 				window.history.go(-1);
 			} else {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -431,9 +432,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						aCells[0].setValueStateText("Please valid value!");
 					}
 				});
-			} 
-			else{
-							aCells[0].setValueState("None");				
+			} else {
+				aCells[0].setValueState("None");
 			}
 		}
 	});

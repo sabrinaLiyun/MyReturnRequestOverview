@@ -84,6 +84,7 @@
 			},
 			"": {
 				"dataSource": "ZCUSTOMER_RETURN",
+				
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"loadMetadataAsync": false,

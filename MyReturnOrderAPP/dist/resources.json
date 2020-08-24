@@ -1,7 +1,7 @@
 {
     "resources": [
         {
-            "name": "serviceBinding-dbg.js",
+            "name": "model\\models-dbg.js",
             "isDebug": true
         },
         {
@@ -10,16 +10,16 @@
             "locale": "_en"
         },
         {
-            "name": "manifest.json"
+            "name": "model\\errorHandling.js"
         },
         {
             "name": "data\\hierarchicalJSONData.json"
         },
         {
-            "name": "model\\models.js"
+            "name": "manifest.json"
         },
         {
-            "name": "model\\errorHandling.js"
+            "name": "model\\models.js"
         },
         {
             "name": "controller\\utilities.js"
@@ -47,8 +47,8 @@
             "merged": true
         },
         {
-            "name": "model\\models-dbg.js",
-            "isDebug": true
+            "name": "i18n\\i18n.properties",
+            "raw": "i18n\\i18n.properties"
         },
         {
             "name": "model\\errorHandling-dbg.js",
@@ -71,8 +71,8 @@
             "isDebug": true
         },
         {
-            "name": "i18n\\i18n.properties",
-            "raw": "i18n\\i18n.properties"
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
         },
         {
             "name": "Component-dbg.js",

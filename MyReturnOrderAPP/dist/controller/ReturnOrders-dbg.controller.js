@@ -44,26 +44,47 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			
+			this.onSearch();
 
 		},
 		_onFioriListReportTableItemPress: function(oEvent) {
 
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext().getObject();
+			var lvYear1 = oBindingContext.CreationDate.getFullYear();
+			var lvMonth1 = oBindingContext.CreationDate.getMonth() + 1;
+			var lvDay1 = oBindingContext.CreationDate.getUTCDate();
+			var lvSAPDateFormat1 = lvYear1  + "-" + lvMonth1 + "-" +  lvDay1;
+			
+			var lvSAPDateFormat2;
+		   if(oBindingContext.ResponseDate===null){
+		   	lvSAPDateFormat2 = "A";
+		   }else{
+		   	var lvYear2 = oBindingContext.ResponseDate.getFullYear();
+			var lvMonth2 = oBindingContext.ResponseDate.getMonth() + 1;
+			var lvDay2 = oBindingContext.ResponseDate.getUTCDate();
+			lvSAPDateFormat2 = lvYear2  + "-" + lvMonth2 + "-" +  lvDay2;
+		   	
+		   }
+			
+			
 
-			/*return new Promise(function(fnResolve) {
-				this.doNavigate("Page2", oBindingContext, fnResolve, "");
-			}.bind(this)).catch(function(err) {
-				if (err !== undefined) {
-					MessageBox.error(err.message);
-				}
-			});*/
 			var oRouter = UIComponent.getRouterFor(this);
 			oRouter.navTo("RouteReturnOrderItems", {
-				OrderNo: oBindingContext.CustomerReturn
-			
-			});
+				OrderNo: oBindingContext.CustomerReturn,
+				SalesOrg: oBindingContext.SalesOrganization,
+				Channel: oBindingContext.DistributionChannel,
+				Division: oBindingContext.OrganizationDivision,
+				CustomerNumber: oBindingContext.SoldToParty,
+				CustomerName: oBindingContext.CustomerName,
+			    CreationDate : lvSAPDateFormat1,
+			    ResponseDate : lvSAPDateFormat2,
+			    Status: oBindingContext.ApprovalStatusDesc
 
+			});
+		
 		},
+		
 		doNavigate: function(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
 			var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
 			var oModel = (oBindingContext) ? oBindingContext.getModel() : null;

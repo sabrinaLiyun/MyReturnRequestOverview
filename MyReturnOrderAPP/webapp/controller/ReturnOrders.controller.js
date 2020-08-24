@@ -44,6 +44,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			
+			this.onSearch();
 
 		},
 		_onFioriListReportTableItemPress: function(oEvent) {
@@ -58,9 +60,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		   if(oBindingContext.ResponseDate===null){
 		   	lvSAPDateFormat2 = "A";
 		   }else{
-		   	var lvYear2 = oBindingContext.CreationDate.getFullYear();
-			var lvMonth2 = oBindingContext.CreationDate.getMonth() + 1;
-			var lvDay2 = oBindingContext.CreationDate.getUTCDate();
+		   	var lvYear2 = oBindingContext.ResponseDate.getFullYear();
+			var lvMonth2 = oBindingContext.ResponseDate.getMonth() + 1;
+			var lvDay2 = oBindingContext.ResponseDate.getUTCDate();
 			lvSAPDateFormat2 = lvYear2  + "-" + lvMonth2 + "-" +  lvDay2;
 		   	
 		   }

@@ -130,12 +130,7 @@
                 "viewPath": "SAPUI5MyReturnOrder.MyReturnOrderAPP.view",
                 "controlAggregation": "pages",
                 "controlId": "ReturnOrder",
-                "clearControlAggregation": false,
-                "bypassed": {
-                    "target": [
-                        "ReturnOrders"
-                    ]
-                }
+                "clearControlAggregation": false
             },
             "routes": [
                 {
@@ -146,15 +141,8 @@
                     ]
                 },
                 {
-                    "pattern": "",
-                    "name": "Page2",
-                    "target": [
-                        "TargetReturnOrders"
-                    ]
-                },
-                {
                     "name": "RouteReturnOrderItems",
-                    "pattern": "ReturnOrderItems/{OrderNo}",
+                    "pattern": "ReturnOrderItems/{OrderNo}/{SalesOrg}/{Channel}/{Division}/{CustomerNumber}/{CustomerName}/{CreationDate}/{ResponseDate}/{Status}",
                     "target": [
                         "TargetReturnOrderItems"
                     ]

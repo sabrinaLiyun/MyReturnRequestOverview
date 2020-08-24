@@ -12,8 +12,8 @@
 									<Label text="Customer number" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<ComboBox id="Combox_CustomerID" width="auto" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'CusomterID' } }" selectionChange="_onComboChange" change="onHandleChange" required="true">
-										<core:Item key="{zreturn>CusomterID}" text="{zreturn>CusomterID}"/>
+									<ComboBox id="Combox_CustomerID" width="auto" items="{ path: 'zreturn>/CustomerNo', sorter: { path: 'CustomerNumber' } }" selectionChange="_onComboChange" change="onHandleChange" required="true">
+										<core:Item key="{zreturn>CustomerNumber}" text="{zreturn>CustomerNumber}"/>
 									</ComboBox>
 									<Text text="" id="Text1" width="200px" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
 								</form:fields>

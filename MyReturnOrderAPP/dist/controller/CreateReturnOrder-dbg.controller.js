@@ -44,6 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 
 		_onComboChange: function (event) {
+
 			var oCustomerCode = event.getParameter("selectedItem").getKey();
 			var afilters = [];
 			afilters.push(new sap.ui.model.Filter("Customer",
@@ -65,16 +66,51 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 
+		onHandleChange: function (oEvent) {
+			var oValidatedComboBox = oEvent.getSource(),
+				sSelectedKey = oValidatedComboBox.getSelectedKey(),
+				sValue = oValidatedComboBox.getValue();
+			if (!sSelectedKey && sValue) {
+				oValidatedComboBox.setValueState("Error");
+				oValidatedComboBox.setValueStateText("Please select valid value!");
+			} else {
+				oValidatedComboBox.setValueState("None");
+			}
+		},
+		onHandleChangeSpecial: function (oEvent) {
+			var oValidatedComboBox = oEvent.getSource(),
+				sSelectedKey = oValidatedComboBox.getSelectedKey(),
+				sValue = oValidatedComboBox.getValue();
+			if (sValue === "Credit Memo") {
+				oValidatedComboBox.setValueState("None");
+			} else if (!sSelectedKey && sValue) {
+				oValidatedComboBox.setValueState("Error");
+				oValidatedComboBox.setValueStateText("Please select valid value!");
+			} else {
+				oValidatedComboBox.setValueState("None");
+			}
+		},
+		_onComboChangeSalesArea: function (event) {
+			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
+			if (!sSalesArea) {
+				this.byId("Combox_SalesAreaID").setValueState("Error");
+				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");
+				return;
+			} else {
+				this.byId("Combox_SalesAreaID").setValueState("None");
+			}
+		},
 		_onPageNavButtonPress: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 			var oQueryParams = this.getQueryParameters(window.location);
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
+				this.onClear();
 				window.history.go(-1);
 			} else {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("default", true);
+				oRouter.navTo("RouteReturnOrders", true);
 			}
 
 		},
@@ -106,12 +142,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onButtonPress1: function () {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			var that = this;
 			return new Promise(function (fnResolve) {
 				sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
 					title: "Cancel",
 					actions: ["Yes", "No"],
 					onClose: function (sActionClicked) {
-						fnResolve(sActionClicked === "Yes");
+						//fnResolve(sActionClicked === "Yes");
+						if (sActionClicked === "Yes") {
+							that.onClear();
+							//window.history.go(-1);
+							oRouter.navTo("RouteReturnOrders", true);
+						}
 					}
 				});
 			}).catch(function (err) {
@@ -132,6 +175,26 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var c1, c2, c3, c4;
 			var items = this.byId("oTableCreate").getItems();
 			var aArray = [];
+			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
+			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
+			var sErrorInput = "No";
+			if (!sCustomerNo) {
+				this.byId("Combox_CustomerID").setValueState("Error");
+				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
+				sErrorInput = "Yes";
+			} else {
+				this.byId("Combox_CustomerID").setValueState("None");
+			}
+			if (!sSalesArea) {
+				this.byId("Combox_SalesAreaID").setValueState("Error");
+				this.byId("Combox_SalesAreaID").setValueStateText("Please select valid value!");
+				sErrorInput = "Yes";
+			} else {
+				this.byId("Combox_SalesAreaID").setValueState("None");
+			}
+			if (sErrorInput === "Yes") {
+				return;
+			}
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
 				c1 = item.getCells()[0].getValue();
@@ -140,6 +203,44 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				c4 = item.getCells()[5].getSelectedKey();
 				c3Text = item.getCells()[4].getValue();
 				c4Text = item.getCells()[5].getValue();
+				if (c1 == "" && c2 == "" && c3Text == "" && c4Text == "") {
+					continue;
+				}
+				if (c1 == "") {
+					item.getCells()[0].setValueState("Error");
+					item.getCells()[0].setValueStateText("Please input value!");
+					sErrorInput = "Yes";
+				} else {
+					item.getCells()[0].setValueState("None");
+				}
+				if (c2 == "") {
+					item.getCells()[2].setValueState("Error");
+					item.getCells()[2].setValueStateText("Please input value!");
+					sErrorInput = "Yes";
+				} else {
+					item.getCells()[2].setValueState("None");
+				}
+				if (c3Text == "") {
+					item.getCells()[4].setValueState("Error");
+					item.getCells()[4].setValueStateText("Please select valid value!");
+					sErrorInput = "Yes";
+				} else {
+					if (!item.getCells()[4].getSelectedKey()) {
+						item.getCells()[4].setValueState("Error");
+						item.getCells()[4].setValueStateText("Please select valid value!");
+						sErrorInput = "Yes";
+					} else {
+						item.getCells()[4].setValueState("None");
+					}
+				}
+				if (c4Text == "") {
+					item.getCells()[5].setValueState("Error");
+					item.getCells()[5].setValueStateText("Please select valid value!");
+					sErrorInput = "Yes";
+				} else {
+					// First selected line has blank key
+					item.getCells()[5].setValueState("None");
+				}
 				if (c1 != "" && c2 != "" && c3Text != "" && c4Text != "") {
 					aArray.push({
 						"Material": c1,
@@ -149,7 +250,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						"RetsMgmtProcessingBlock": "B"
 					});
 				}
-
+			}
+			if (sErrorInput == "Yes") {
+				return;
 			}
 			if (aArray == "") {
 				MessageBox.error("No items are filled");
@@ -166,24 +269,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}
 				};
 				this.oModel = this.getView().getModel("ZRETURN_SAP");
-				//var oModel = new sap.ui.model.odata.v2.ODataModel("http://rb3s4xa0.server.bosch.com:8066/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV");
+				this.byId("oTableCreate").setBusy(true);
 				this.oModel.create("/A_CustomerReturn", so, {
 					refreshAfterChange: true,
 					success: function (res) {
-						//console.log("success", res);
+						this.byId("oTableCreate").setBusy(false);
 						MessageBox.success("Return Order " + res.CustomerReturn + " was created successfully");
-						//                  this.byId("Combox_CustomerID").setSelectedKey("");
-						// this.onClear();
-						//this.getView().getModel().refresh();
-
-					},
+						this.onClear();
+					}.bind(this),
 					error: function (res) {
-						//console.log("failed", res);
-						MessageBox.error("Create return order failed");
-					}
+						this.byId("oTableCreate").setBusy(false);
+						//MessageBox.error(res.responseText.substring(60,80));
+						MessageBox.error("Failed");
+					}.bind(this)
 				});
-				// this.getView().getModel().refresh();
-				this.onClear();
 			}
 		},
 
@@ -201,7 +300,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}),
 					new sap.m.Input(),
 					new sap.m.Text({
-						text: "PC"
+						text: ""
 					}),
 					new sap.m.ComboBox({
 						items: {
@@ -210,6 +309,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 								key: "{zreturn>ReturnReason}",
 								text: "{zreturn>ReturnReasonName}"
 							})
+						},
+						change: function (oEvent) {
+							that.onHandleChange(oEvent);
 						}
 					}),
 					new sap.m.ComboBox({
@@ -219,6 +321,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 								key: "{zreturn>ReturnsRefundType}",
 								text: "{zreturn>RefundTypeDescription}"
 							})
+						},
+						change: function (oEvent) {
+							that.onHandleChangeSpecial(oEvent);
 						}
 					})
 				]
@@ -253,6 +358,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		onClear: function () {
 			this.byId("Combox_CustomerID").setSelectedKey("");
 			this.byId("Combox_SalesAreaID").setSelectedKey("");
+			this.byId("Text1").setText("");
 			var items = this.byId("oTableCreate").getItems();
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
@@ -263,7 +369,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				item.getCells()[3].setText("");
 				item.getCells()[4].setSelectedKey("");
 				item.getCells()[5].setSelectedKey("");
+				item.getCells()[0].setValueState("None");
+				item.getCells()[2].setValueState("None");
+				item.getCells()[4].setValueState("None");
+				item.getCells()[5].setValueState("None");
 			}
+			this.byId("Combox_CustomerID").setValueState("None");
+			this.byId("Combox_SalesAreaID").setValueState("None");
 		},
 
 		onTest: function (oEvent) {
@@ -301,14 +413,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					filters: afilters,
 					success: function (oData, response) {
 						var data = oData.results[0];
-						mDes = data.MaterialName;
-						aCells[1].setText(mDes);
+						if (typeof data !== "undefined") {
+							mDes = data.MaterialName;
+							aCells[1].setText(mDes);
+							aCells[3].setText("PC");
+							aCells[0].setValueState("None");
+						} else {
+							aCells[0].setValueState("Error");
+							aCells[0].setValueStateText("Please valid value!");
+							aCells[1].setText("");
+							aCells[3].setText("");
+						}
 					},
 					error: function (oErr) {
-						this.console.log("Failed");
+						this.console.log("Material read failed");
+						aCells[0].setValueState("Error");
+						aCells[0].setValueStateText("Please valid value!");
 					}
 				});
-				aCells[3].setText("PC");
+			} 
+			else{
+							aCells[0].setValueState("None");				
 			}
 		}
 	});

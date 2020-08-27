@@ -179,6 +179,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
 			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
 			var sErrorInput = "No";
+			var sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
 			if (!sCustomerNo) {
 				this.byId("Combox_CustomerID").setValueState("Error");
 				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
@@ -280,9 +281,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}.bind(this),
 					error: function (res) {
 						this.byId("oTableCreate").setBusy(false);
-						//MessageBox.error(res.responseText.substring(60,80));
-						MessageBox.error(JSON.parse(res.responseText).error.message.value);
-						//MessageBox.error("Failed");
+						MessageBox.error("Failed.", {
+							title: "Error",
+							id: "messageBoxId2",
+							details: JSON.parse(res.responseText).error.message.value,
+							contentWidth: "100px",
+							styleClass: sResponsivePaddingClasses
+						});
 					}.bind(this)
 				});
 			}
@@ -379,7 +384,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.byId("Combox_CustomerID").setValueState("None");
 			this.byId("Combox_SalesAreaID").setValueState("None");
 			// this.byId("oTableCreate").getBinding("items").refresh();
-			sap.ui.getCore().byId("oTableCreate").getModel().refresh(true);
+			//sap.ui.getCore().byId("oTableCreate").getModel().refresh(true);
 		},
 
 		onTest: function (oEvent) {

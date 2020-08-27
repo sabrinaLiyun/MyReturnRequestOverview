@@ -84,6 +84,7 @@
 			},
 			"": {
 				"dataSource": "ZCUSTOMER_RETURN",
+				
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"loadMetadataAsync": false,
@@ -132,14 +133,14 @@
 				"controlAggregation": "pages",
 				"controlId": "ReturnOrder",
 				"clearControlAggregation": false
-			
+
 			},
 			"routes": [{
 					"name": "RouteReturnOrders",
 					"pattern": "ReturnOrders",
 					"target": ["TargetReturnOrders"]
 				},
-			
+
 				{
 
 					"name": "RouteReturnOrderItems",

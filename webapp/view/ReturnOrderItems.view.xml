@@ -35,7 +35,7 @@
 							<HBox width="250px">
 								<items>
 									<Label text="{i18n>ItemsPageSalesArea}：" width="140px" textDirection="RTL" textAlign="Left"/>
-									<ObjectStatus text="{OrderResource>/CustomerNo}/{OrderResource&gt;/DC}/{OrderResource>/Division}" textDirection="LTR"/>
+									<ObjectStatus text="{OrderResource>/SalesOrg}/{OrderResource&gt;/DC}/{OrderResource>/Division}" textDirection="LTR"/>
 								</items>
 							</HBox>
 						</items>

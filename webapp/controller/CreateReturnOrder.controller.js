@@ -280,7 +280,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					error: function (res) {
 						this.byId("oTableCreate").setBusy(false);
 						//MessageBox.error(res.responseText.substring(60,80));
-						MessageBox.error("Failed");
+						MessageBox.error(JSON.parse(res.responseText).error.message.value);
+						//MessageBox.error("Failed");
 					}.bind(this)
 				});
 			}
@@ -376,6 +377,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 			this.byId("Combox_CustomerID").setValueState("None");
 			this.byId("Combox_SalesAreaID").setValueState("None");
+			// this.byId("oTableCreate").getBinding("items").refresh();
+			sap.ui.getCore().byId("oTableCreate").getModel().refresh(true);
 		},
 
 		onTest: function (oEvent) {

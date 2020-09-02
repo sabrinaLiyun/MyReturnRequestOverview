@@ -107,7 +107,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
 				this.onClear();
-
 				window.history.go(-1);
 			} else {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

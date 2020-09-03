@@ -101,17 +101,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 		_onPageNavButtonPress: function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-			var oQueryParams = this.getQueryParameters(window.location);
+			// var oHistory = History.getInstance();
+			// var sPreviousHash = oHistory.getPreviousHash();
+			// var oQueryParams = this.getQueryParameters(window.location);
 
-			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
-				this.onClear();
-				window.history.go(-1);
-			} else {
+			// if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
+			// 	this.onClear();
+			// 	window.history.go(-1);
+			// } else {
+			    this.onClear();
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 				oRouter.navTo("RouteReturnOrders", true);
-			}
+			// }
 
 		},
 		getQueryParameters: function (oLocation) {

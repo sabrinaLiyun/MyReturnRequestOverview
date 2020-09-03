@@ -248,7 +248,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						"RequestedQuantity": c2,
 						"ReturnReason": c3,
 						"ReturnsRefundType": c4,
-						"RetsMgmtProcessingBlock": "B"
+						"RetsMgmtProcessingBlock": "B",
+						"ReturnsRefundProcgMode": "P",
+						"CustRetItmFollowUpActivity": "0001"
 					});
 				}
 			}

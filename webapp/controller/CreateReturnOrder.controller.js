@@ -101,12 +101,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 		_onPageNavButtonPress: function () {
+			var myLocation = location;
+				myLocation.reload();
+
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 			var oQueryParams = this.getQueryParameters(window.location);
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
-				this.onClear();
+				
+				//this.onClear();
 
 				window.history.go(-1);
 			} else {
@@ -153,6 +157,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						//fnResolve(sActionClicked === "Yes");
 						if (sActionClicked === "Yes") {
 							that.onClear();
+
 							//window.history.go(-1);
 							oRouter.navTo("RouteReturnOrders", true);
 						}
@@ -377,6 +382,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 			this.byId("Combox_CustomerID").setValueState("None");
 			this.byId("Combox_SalesAreaID").setValueState("None");
+
 		},
 
 		onTest: function (oEvent) {

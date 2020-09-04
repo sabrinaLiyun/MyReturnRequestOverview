@@ -13,7 +13,7 @@
 									<Button type="Back" press="_onPageNavButtonPress"/>
 								</contentLeft>
 								<contentMiddle>
-									<Title text="My Return Order"/>
+									<Title text= "{i18n>appTitle}"/>
 								</contentMiddle>
 								<contentRight/>
 							</Bar>

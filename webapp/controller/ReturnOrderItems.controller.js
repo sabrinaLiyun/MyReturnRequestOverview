@@ -23,8 +23,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oParams = {};
 
 			//let path = `/CustomerREturn('${oTransfer.OrderNo}')`; ///CustomerREturn('60000006')*/
-			//var path = "/CustomerREturn('${oTransfer.OrderNo}')";
-
 			// var selectedOrder = this.getView().getModel().getProperty(path);
 
 			oParams.OrderNo = oTransfer.OrderNo;
@@ -33,7 +31,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oParams.CustName = oTransfer.CustomerName;
 			oParams.DC = oTransfer.Channel;
 			oParams.Division = oTransfer.Division;
-			//	console.log("Order", selectedOrder);
 
 			var lvSplitvalue1 = oTransfer.CreationDate.split("-");
 			var lvYear1 = lvSplitvalue1[0];
@@ -56,7 +53,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			}
 
-			//oParams.ResponseDate =  selectedOrder.ResponseDate;
+			
 			oParams.Status = oTransfer.Status;
 
 			oResourceModel.setDefaultBindingMode("TwoWay");
@@ -71,7 +68,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			if (sFilter !== "") {
 				oFilterValues.push(new Filter("CustomerReturn", FilterOperator.EQ, sFilter));
 			}
-			// console.log(sFilter);
+			
 			//Filter binding
 			var oList = this.byId("idItemTable");
 			var oBinding = oList.getBinding("items");

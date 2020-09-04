@@ -159,6 +159,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			return new Promise(function(fnResolve) {
 
 				this.doNavigate("RouteCreateReturnOrder", oBindingContext, fnResolve, "");
+				
 			}.bind(this)).catch(function(err) {
 				if (err !== undefined) {
 					MessageBox.error(err.message);

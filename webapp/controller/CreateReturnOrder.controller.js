@@ -101,23 +101,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 		_onPageNavButtonPress: function () {
-		//	var myLocation = location;
-				//myLocation.reload();
-
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-			var oQueryParams = this.getQueryParameters(window.location);
-
-			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
-				
 			this.onClear();
-           
-			window.history.go(-1);
-			} else {
-			 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("RouteReturnOrders", true);
-			}
-
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("RouteReturnOrders", true);
 		},
 		getQueryParameters: function (oLocation) {
 			var oQuery = {};
@@ -184,6 +170,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var sCustomerNo = this.byId("Combox_CustomerID").getSelectedKey();
 			var sSalesArea = this.byId("Combox_SalesAreaID").getSelectedKey();
 			var sErrorInput = "No";
+			var sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
 			if (!sCustomerNo) {
 				this.byId("Combox_CustomerID").setValueState("Error");
 				this.byId("Combox_CustomerID").setValueStateText("Please select valid value!");
@@ -209,24 +196,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				c4 = item.getCells()[5].getSelectedKey();
 				c3Text = item.getCells()[4].getValue();
 				c4Text = item.getCells()[5].getValue();
-				if (c1 == "" && c2 == "" && c3Text == "" && c4Text == "") {
+				if (c1 === "" && c2 == "" && c3Text == "" && c4Text == "") {
 					continue;
 				}
-				if (c1 == "") {
+				if (c1 === "") {
 					item.getCells()[0].setValueState("Error");
 					item.getCells()[0].setValueStateText("Please input value!");
 					sErrorInput = "Yes";
 				} else {
 					item.getCells()[0].setValueState("None");
 				}
-				if (c2 == "") {
+				if (c2 === "") {
 					item.getCells()[2].setValueState("Error");
 					item.getCells()[2].setValueStateText("Please input value!");
 					sErrorInput = "Yes";
 				} else {
 					item.getCells()[2].setValueState("None");
 				}
-				if (c3Text == "") {
+				if (c3Text === "") {
 					item.getCells()[4].setValueState("Error");
 					item.getCells()[4].setValueStateText("Please select valid value!");
 					sErrorInput = "Yes";
@@ -239,7 +226,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						item.getCells()[4].setValueState("None");
 					}
 				}
-				if (c4Text == "") {
+				if (c4Text === "") {
 					item.getCells()[5].setValueState("Error");
 					item.getCells()[5].setValueStateText("Please select valid value!");
 					sErrorInput = "Yes";
@@ -247,20 +234,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					// First selected line has blank key
 					item.getCells()[5].setValueState("None");
 				}
-				if (c1 != "" && c2 != "" && c3Text != "" && c4Text != "") {
+				if (c1 !== "" && c2 != "" && c3Text != "" && c4Text != "") {
 					aArray.push({
 						"Material": c1,
 						"RequestedQuantity": c2,
 						"ReturnReason": c3,
 						"ReturnsRefundType": c4,
-						"RetsMgmtProcessingBlock": "B"
+						"RetsMgmtProcessingBlock": "B",
+						"ReturnsRefundProcgMode": "P",
+						"CustRetItmFollowUpActivity": "0001"
 					});
 				}
 			}
-			if (sErrorInput == "Yes") {
+			if (sErrorInput === "Yes") {
 				return;
 			}
-			if (aArray == "") {
+			if (aArray === "") {
 				MessageBox.error("No items are filled");
 			} else {
 				var so = {
@@ -285,8 +274,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}.bind(this),
 					error: function (res) {
 						this.byId("oTableCreate").setBusy(false);
-						//MessageBox.error(res.responseText.substring(60,80));
-						MessageBox.error("Failed");
+						MessageBox.error("Failed.", {
+							title: "Error",
+							id: "messageBoxId2",
+							details: JSON.parse(res.responseText).error.message.value,
+							contentWidth: "100px",
+							styleClass: sResponsivePaddingClasses
+						});
 					}.bind(this)
 				});
 			}
@@ -366,9 +360,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.byId("Combox_SalesAreaID").setSelectedKey("");
 			this.byId("Text1").setText("");
 			var items = this.byId("oTableCreate").getItems();
+			var oTable = this.getView().byId("oTableCreate");
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
-
 				item.getCells()[0].setValue("");
 				item.getCells()[1].setText("");
 				item.getCells()[2].setValue("");
@@ -379,10 +373,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				item.getCells()[2].setValueState("None");
 				item.getCells()[4].setValueState("None");
 				item.getCells()[5].setValueState("None");
+				if (i > 9) {
+					oTable.removeItem(item);
+				}
 			}
 			this.byId("Combox_CustomerID").setValueState("None");
 			this.byId("Combox_SalesAreaID").setValueState("None");
-
+			var j = items.length;
+			if (j < 10) {
+				do {
+					this.onAdd();
+					j++;
+				} while (j < 10);
+			}
 		},
 
 		onTest: function (oEvent) {
@@ -406,7 +409,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oModel = this.getView().getModel();
 			var mDes;
 			var cMaterial = aCells[0].getValue();
-			if (cMaterial != "") {
+			if (cMaterial !== "") {
 				afilters.push(
 					new sap.ui.model.Filter({
 						filters: [
@@ -427,7 +430,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 							aCells[0].setValueState("None");
 						} else {
 							aCells[0].setValueState("Error");
-							aCells[0].setValueStateText("Please valid value!");
+							aCells[0].setValueStateText("Please input valid value!");
 							aCells[1].setText("");
 							aCells[3].setText("");
 						}
@@ -435,7 +438,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					error: function (oErr) {
 						this.console.log("Material read failed");
 						aCells[0].setValueState("Error");
-						aCells[0].setValueStateText("Please valid value!");
+						aCells[0].setValueStateText("Please input valid value!");
 					}
 				});
 			} else {

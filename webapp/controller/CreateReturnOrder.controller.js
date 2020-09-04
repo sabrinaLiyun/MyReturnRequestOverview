@@ -101,8 +101,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 		_onPageNavButtonPress: function () {
-			var myLocation = location;
-				myLocation.reload();
+		//	var myLocation = location;
+				//myLocation.reload();
 
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
@@ -110,11 +110,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
 				
-				//this.onClear();
-
-				window.history.go(-1);
+			this.onClear();
+           
+			window.history.go(-1);
 			} else {
-				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 				oRouter.navTo("RouteReturnOrders", true);
 			}
 

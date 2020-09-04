@@ -101,19 +101,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 		_onPageNavButtonPress: function () {
-			// var oHistory = History.getInstance();
-			// var sPreviousHash = oHistory.getPreviousHash();
-			// var oQueryParams = this.getQueryParameters(window.location);
-
-			// if (sPreviousHash !== undefined || oQueryParams.navBackToLaunchpad) {
-			// 	this.onClear();
-			// 	window.history.go(-1);
-			// } else {
-			    this.onClear();
-				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("RouteReturnOrders", true);
-			// }
-
+			this.onClear();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("RouteReturnOrders", true);
 		},
 		getQueryParameters: function (oLocation) {
 			var oQuery = {};
@@ -369,9 +359,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.byId("Combox_SalesAreaID").setSelectedKey("");
 			this.byId("Text1").setText("");
 			var items = this.byId("oTableCreate").getItems();
+			var oTable = this.getView().byId("oTableCreate");
 			for (var i = 0; i < items.length; i++) {
 				var item = items[i];
-
 				item.getCells()[0].setValue("");
 				item.getCells()[1].setText("");
 				item.getCells()[2].setValue("");
@@ -382,11 +372,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				item.getCells()[2].setValueState("None");
 				item.getCells()[4].setValueState("None");
 				item.getCells()[5].setValueState("None");
+				if (i > 9) {
+					oTable.removeItem(item);
+				}
 			}
 			this.byId("Combox_CustomerID").setValueState("None");
 			this.byId("Combox_SalesAreaID").setValueState("None");
-			// this.byId("oTableCreate").getBinding("items").refresh();
-			//sap.ui.getCore().byId("oTableCreate").getModel().refresh(true);
+			var j = items.length;
+			if (j < 10) {
+				do {
+					this.onAdd();
+					j++;
+				} while (j < 10);
+			}
 		},
 
 		onTest: function (oEvent) {
@@ -410,7 +408,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oModel = this.getView().getModel();
 			var mDes;
 			var cMaterial = aCells[0].getValue();
-			if (cMaterial != "") {
+			if (cMaterial !== "") {
 				afilters.push(
 					new sap.ui.model.Filter({
 						filters: [
@@ -431,7 +429,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 							aCells[0].setValueState("None");
 						} else {
 							aCells[0].setValueState("Error");
-							aCells[0].setValueStateText("Please valid value!");
+							aCells[0].setValueStateText("Please input valid value!");
 							aCells[1].setText("");
 							aCells[3].setText("");
 						}
@@ -439,7 +437,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					error: function (oErr) {
 						this.console.log("Material read failed");
 						aCells[0].setValueState("Error");
-						aCells[0].setValueStateText("Please valid value!");
+						aCells[0].setValueStateText("Please input valid value!");
 					}
 				});
 			} else {

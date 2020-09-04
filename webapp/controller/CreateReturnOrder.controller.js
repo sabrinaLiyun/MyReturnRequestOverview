@@ -195,24 +195,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				c4 = item.getCells()[5].getSelectedKey();
 				c3Text = item.getCells()[4].getValue();
 				c4Text = item.getCells()[5].getValue();
-				if (c1 == "" && c2 == "" && c3Text == "" && c4Text == "") {
+				if (c1 === "" && c2 == "" && c3Text == "" && c4Text == "") {
 					continue;
 				}
-				if (c1 == "") {
+				if (c1 === "") {
 					item.getCells()[0].setValueState("Error");
 					item.getCells()[0].setValueStateText("Please input value!");
 					sErrorInput = "Yes";
 				} else {
 					item.getCells()[0].setValueState("None");
 				}
-				if (c2 == "") {
+				if (c2 === "") {
 					item.getCells()[2].setValueState("Error");
 					item.getCells()[2].setValueStateText("Please input value!");
 					sErrorInput = "Yes";
 				} else {
 					item.getCells()[2].setValueState("None");
 				}
-				if (c3Text == "") {
+				if (c3Text === "") {
 					item.getCells()[4].setValueState("Error");
 					item.getCells()[4].setValueStateText("Please select valid value!");
 					sErrorInput = "Yes";
@@ -225,7 +225,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						item.getCells()[4].setValueState("None");
 					}
 				}
-				if (c4Text == "") {
+				if (c4Text === "") {
 					item.getCells()[5].setValueState("Error");
 					item.getCells()[5].setValueStateText("Please select valid value!");
 					sErrorInput = "Yes";
@@ -233,7 +233,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					// First selected line has blank key
 					item.getCells()[5].setValueState("None");
 				}
-				if (c1 != "" && c2 != "" && c3Text != "" && c4Text != "") {
+				if (c1 !== "" && c2 != "" && c3Text != "" && c4Text != "") {
 					aArray.push({
 						"Material": c1,
 						"RequestedQuantity": c2,
@@ -245,10 +245,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					});
 				}
 			}
-			if (sErrorInput == "Yes") {
+			if (sErrorInput === "Yes") {
 				return;
 			}
-			if (aArray == "") {
+			if (aArray === "") {
 				MessageBox.error("No items are filled");
 			} else {
 				var so = {

@@ -361,7 +361,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		/**
 		 * Called when enter event is trigger during cursor in material input 
-		 * @param {sap.ui.base.Event} oEvent the update finished event
+		 * @param {sap.ui.base.Event} oEvent the update finished event 
 		 * @public
 		 */
 		onEnter: function (oEvent) {

@@ -27,7 +27,7 @@
 									<Label text="Sales Area" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
 								</form:label>
 								<form:fields>
-									<Select id="Combox_SalesAreaID" forceSelection="false" width="auto" change="onHandleSelectChange"
+									<Select id="Combox_SalesAreaID" forceSelection="false" width="auto" change="onSelectChangeSalesArea"
 										items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'SalesOrg' } }">
 										<core:Item key="{zreturn>SalesOrg}/{zreturn>SalesChannel}/{zreturn>SalesDivision}"
 											text="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}"/>
@@ -115,7 +115,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
 								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-						<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}" change="onHandleChange">
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}" change="onHandleChange">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
 								</items>
@@ -135,7 +135,7 @@
 							<Input xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"/>
 							<Text xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m"
 								text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-						<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}" change="onHandleChange">
+							<ComboBox xmlns="sap.m" items="{zreturn>/ReturnReasonText}" change="onHandleChange">
 								<items>
 									<core:Item xmlns:core="sap.ui.core" key="{zreturn>ReturnReason}" text="{zreturn>ReturnReasonName}"/>
 								</items>

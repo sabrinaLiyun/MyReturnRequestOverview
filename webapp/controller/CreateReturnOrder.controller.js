@@ -63,6 +63,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}.bind(this)
 
 			});
+			var oValidatedComboBox = event.getSource();
+			oValidatedComboBox.setValueState("None");
 
 		},
 
@@ -77,6 +79,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				oValidatedComboBox.setValueState("None");
 			}
 		},
+		onHandleSelectChange: function (oEvent) {
+			var oValidatedComboBox = oEvent.getSource();
+
+			oValidatedComboBox.setValueState("None");
+
+		},
+
 		onHandleChangeSpecial: function (oEvent) {
 			var oValidatedComboBox = oEvent.getSource(),
 				sSelectedKey = oValidatedComboBox.getSelectedKey(),
@@ -103,8 +112,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_onPageNavButtonPress: function () {
 			this.onClear();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			
 			oRouter.navTo("RouteReturnOrders", true);
+			
 		},
+		
 		getQueryParameters: function (oLocation) {
 			var oQuery = {};
 			var aParams = oLocation.search.substring(1).split("&");
@@ -135,27 +147,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_onButtonPress1: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			var that = this;
-			return new Promise(function (fnResolve) {
-				sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
-					title: "Cancel",
-					actions: ["Yes", "No"],
-					onClose: function (sActionClicked) {
-						//fnResolve(sActionClicked === "Yes");
-						if (sActionClicked === "Yes") {
-							that.onClear();
 
-							//window.history.go(-1);
-							oRouter.navTo("RouteReturnOrders", true);
+		
+
+				return new Promise(function (fnResolve) {
+
+					sap.m.MessageBox.confirm("This page contains unsaved data. Do you really want to exit?", {
+						title: "Cancel",
+						actions: ["Yes", "No"],
+						onClose: function (sActionClicked) {
+							//fnResolve(sActionClicked === "Yes");
+							if (sActionClicked === "Yes") {
+								that.onClear();
+
+								//window.history.go(-1);
+								oRouter.navTo("RouteReturnOrders", true);
+							}
 						}
+					});
+
+				}).catch(function (err) {
+					if (err !== undefined) {
+						MessageBox.error(err);
 					}
 				});
-			}).catch(function (err) {
-				if (err !== undefined) {
-					MessageBox.error(err);
-				}
-			});
-
+			
 		},
+
 		onInit: function () {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("TargetCreateReturnOrder").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));

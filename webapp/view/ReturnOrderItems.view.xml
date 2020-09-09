@@ -69,7 +69,7 @@
 											<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
 												<content>
 													<Title text="Items" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
-													<Title text="(1)"/>
+													<Title text="(0)"/>
 													<ToolbarSpacer width=""/>
 												</content>
 											</OverflowToolbar>

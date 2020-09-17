@@ -23,8 +23,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oParams = {};
 
 			//let path = `/CustomerREturn('${oTransfer.OrderNo}')`; ///CustomerREturn('60000006')*/
-			//var path = "/CustomerREturn('${oTransfer.OrderNo}')";
-
 			// var selectedOrder = this.getView().getModel().getProperty(path);
 
 			oParams.OrderNo = oTransfer.OrderNo;
@@ -33,19 +31,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oParams.CustName = oTransfer.CustomerName;
 			oParams.DC = oTransfer.Channel;
 			oParams.Division = oTransfer.Division;
-			//	console.log("Order", selectedOrder);
 
 			var lvSplitvalue1 = oTransfer.CreationDate.split("-");
 			var lvYear1 = lvSplitvalue1[0];
 			var lvMonth1 = lvSplitvalue1[1];
 			var lvDay1 = lvSplitvalue1[2];
 			var lvSAPDateFormat1 = lvYear1 + "/" + lvMonth1 + "/" + lvDay1;
+
 			oParams.CreationDate = lvSAPDateFormat1;
 
 			var lvSAPDateFormat2;
 
 			if (oTransfer.ResponseDate === "A") {
-				oParams.ResponseDate =" ";
+				oParams.ResponseDate = " ";
 			} else {
 				var lvSplitvalue2 = oTransfer.ResponseDate.split("-");
 				var lvYear2 = lvSplitvalue2[0];
@@ -56,7 +54,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			}
 
-			//oParams.ResponseDate =  selectedOrder.ResponseDate;
 			oParams.Status = oTransfer.Status;
 
 			oResourceModel.setDefaultBindingMode("TwoWay");
@@ -71,7 +68,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			if (sFilter !== "") {
 				oFilterValues.push(new Filter("CustomerReturn", FilterOperator.EQ, sFilter));
 			}
-			// console.log(sFilter);
+
 			//Filter binding
 			var oList = this.byId("idItemTable");
 			var oBinding = oList.getBinding("items");
@@ -91,7 +88,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 
 		},
-
+	
+/*
+ * show different statusIcon according to approval status
+ */
 		formatValudationSatus: function (sValue) {
 			var statusIcon;
 			if (sValue === "Rejected") {
@@ -103,7 +103,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 			return statusIcon;
 		},
-
+/*
+ * show different status according to approval status
+ */
 		formatAvailableToObjectState: function (bAvailable) {
 			// return bAvailable ? "Error" : "Success";
 			var vStatus;
@@ -119,7 +121,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			return vStatus;
 		},
-
+/*
+ * Navigate to page "ReturnsOrders" when press back button
+ */
 		_onPageNavButtonPress: function (oEvent) {
 
 			var oBindingContext = oEvent.getSource().getBindingContext();
@@ -188,7 +192,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				fnPromiseResolve();
 			}
 
-		},
+		}
 
 	});
 }, /* bExport= */ true);

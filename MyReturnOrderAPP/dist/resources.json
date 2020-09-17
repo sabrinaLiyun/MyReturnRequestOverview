@@ -1,16 +1,13 @@
 {
     "resources": [
         {
-            "name": "model\\models-dbg.js",
-            "isDebug": true
+            "name": "i18n\\i18n.properties",
+            "raw": "i18n\\i18n.properties"
         },
         {
             "name": "i18n\\i18n_en.properties",
             "raw": "i18n\\i18n.properties",
             "locale": "_en"
-        },
-        {
-            "name": "model\\errorHandling.js"
         },
         {
             "name": "data\\hierarchicalJSONData.json"
@@ -20,6 +17,9 @@
         },
         {
             "name": "model\\models.js"
+        },
+        {
+            "name": "model\\errorHandling.js"
         },
         {
             "name": "controller\\utilities.js"
@@ -47,8 +47,8 @@
             "merged": true
         },
         {
-            "name": "i18n\\i18n.properties",
-            "raw": "i18n\\i18n.properties"
+            "name": "model\\models-dbg.js",
+            "isDebug": true
         },
         {
             "name": "model\\errorHandling-dbg.js",

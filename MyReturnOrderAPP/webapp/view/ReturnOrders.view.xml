@@ -7,6 +7,7 @@
 				<f:DynamicPageTitle>
 					<f:heading>
 						<variants:VariantManagement/>
+						<Title text="My Return Order "/>
 					</f:heading>
 					<f:actions>
 						<ToolbarSpacer/>
@@ -69,7 +70,7 @@
 								<OverflowToolbar design="Transparent">
 									<content>
 										<Title textAlign="Begin" text="Objects"/>
-										<Title text="(1)"/>
+										<Title text="(0)"/>
 										<ToolbarSpacer/>
 										<Button text="Create New Return Order" iconFirst="false" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress">
 											<layoutData>

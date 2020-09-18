@@ -1,6 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:variants="sap.ui.comp.variants" xmlns="sap.m"
-	xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core"
-	controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.ReturnOrders">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" controllerName="SAPUI5MyReturnOrder.MyReturnOrderAPP.controller.ReturnOrders">
 	<App id="ReturnOrder">
 		<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
 			<f:title>
@@ -21,29 +19,23 @@
 						
 						<filterbar:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" search="onSearch">
 							<filterbar:filterItems>
-								<filterbar:FilterItem label="Return Order"
-									name="ReturnOrderFilter">
+								<filterbar:FilterItem label="Return Order" name="ReturnOrderFilter">
 									<filterbar:control>
-											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Return Order"></SearchField>
+											<SearchField id="searchCustomerReturn" width="25%" search=".onBasecSearch" placeholder="Search for Return Order"/>
 									</filterbar:control>
 								</filterbar:FilterItem>
 								
-								<filterbar:FilterItem label="Creation Date" id="datePCreateDate"
-									name="CreationDateFilter">
+								<filterbar:FilterItem label="Creation Date" id="datePCreateDate" name="CreationDateFilter">
 									<filterbar:control>
-										<DatePicker width="auto" id="datePCreateDatep" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true"
-											visible="true" valueFormat="yyyyMMdd"/>
+										<DatePicker width="auto" id="datePCreateDatep" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
 									</filterbar:control>
 								</filterbar:FilterItem>
-								<filterbar:FilterItem label="Response Date"
-									name="ResponseDateFilter">
+								<filterbar:FilterItem label="Response Date" name="ResponseDateFilter">
 									<filterbar:control>
-										<DatePicker width="auto" displayFormat="medium" id="datePResponseDate" required="false" valueStateText="Invalid entry" enabled="true"
-											visible="true" valueFormat="yyyyMMdd"/>
+										<DatePicker width="auto" displayFormat="medium" id="datePResponseDate" required="false" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
 									</filterbar:control>
 								</filterbar:FilterItem>
-								<filterbar:FilterItem label="Status"
-									name="StatusFilter">
+								<filterbar:FilterItem label="Status" name="StatusFilter">
 									<filterbar:control>
 										<MultiComboBox id="comboApprovalSta">
 											<items>
@@ -63,9 +55,7 @@
 			<f:content>
 				<VBox fitContainer="true">
 					<items>
-						<Table width="100%" growing="true" id="TabCustomerReturn" growingScrollToLoad="true" growingThreshold="25"
-							itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished"
-							items="{path: '/CustomerREturn', sorter: { path: 'CustomerReturn', descending: true }}">
+						<Table width="100%" growing="true" id="TabCustomerReturn" growingScrollToLoad="true" growingThreshold="25" itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished" items="{path: '/CustomerREturn', sorter: { path: 'CustomerReturn', descending: true }}">
 							<headerToolbar>
 								<OverflowToolbar design="Transparent">
 									<content>
@@ -81,22 +71,22 @@
 								</OverflowToolbar>
 							</headerToolbar>
 							<columns>
-								<Column width="auto" minScreenWidth="Phone">
+								<Column width="120px" minScreenWidth="Phone">
 									<header>
 										<Text text="Return Order" width="auto"/>
 									</header>
 								</Column>
-								<Column width="auto" minScreenWidth="Phone">
+								<Column width="120px" minScreenWidth="Phone">
 									<header>
 										<Text text="Sales org" width="auto"/>
 									</header>
 								</Column>
-								<Column width="auto" minScreenWidth="Phone">
+								<Column width="120px" minScreenWidth="Phone">
 									<header>
 										<Text text="Customer Number" width="auto"/>
 									</header>
 								</Column>
-								<Column width="auto" minScreenWidth="Phone">
+								<Column width="350px" minScreenWidth="Phone">
 									<header>
 										<Text text="Customer Name" width="auto"/>
 									</header>

@@ -76,17 +76,17 @@
 										<Text text="Return Order" width="auto"/>
 									</header>
 								</Column>
-								<Column width="120px" minScreenWidth="Phone">
+								<Column width="100px" minScreenWidth="Phone">
 									<header>
 										<Text text="Sales org" width="auto"/>
 									</header>
 								</Column>
-								<Column width="120px" minScreenWidth="Phone">
+								<Column width="130px" minScreenWidth="Phone">
 									<header>
 										<Text text="Customer Number" width="auto"/>
 									</header>
 								</Column>
-								<Column width="350px" minScreenWidth="Phone">
+								<Column width="330px" minScreenWidth="Phone">
 									<header>
 										<Text text="Customer Name" width="auto"/>
 									</header>

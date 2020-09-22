@@ -5,43 +5,42 @@
 				<form:title>
 					<core:Title text="Header" level="Auto"/>
 				</form:title>
-				<form:formContainers>
-					<form:FormContainer visible="true" expandable="true">
-						<form:formElements>
-							<form:FormElement visible="true">
-								<form:label>
-									<Label text="Customer number" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
-								</form:label>
-								<form:fields>
-									<Select id="Combox_CustomerID" width="auto" forceSelection="false" items="{ path: 'zreturn>/CustomerNo', sorter: { path: 'CustomerNumber' } }" change="onSelectChange">
-										<core:Item key="{zreturn>CustomerNumber}" text="{zreturn>CustomerNumber}"/>
-									</Select>
-									<Text text="" id="Text1" width="400px" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-								</form:fields>
-							</form:FormElement>
-							<form:FormElement visible="true">
-								<form:label>
-									<Label text="Sales Area" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="LTR" visible="true"/>
-								</form:label>
-								<form:fields>
-									<Select id="Combox_SalesAreaID" forceSelection="false" width="auto" change="onSelectChangeSalesArea" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'SalesOrg' } }">
-										<core:Item key="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}" text="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}"/>
-									</Select>
-								</form:fields>
-								<Text text="" width="200px" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-							</form:FormElement>
-						</form:formElements>
-						<form:title/>
-					</form:FormContainer>
-					<form:FormContainer visible="true">
-						<form:formElements/>
-						<form:title/>
-					</form:FormContainer>
-				</form:formContainers>
+				<form:formContainers/>
 				<form:layout>
-					<form:ResponsiveGridLayout adjustLabelSpan="true" columnsL="2" labelSpanL="4" columnsM="1" labelSpanM="2" labelSpanS="12" singleContainerFullSize="false"/>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
 				</form:layout>
 			</form:Form>
+			<VBox alignItems="Start" direction="Column" fitContainer="true" width="auto" renderType="Div" visible="true" height="auto">
+				<items>
+					<HBox alignItems="Start" direction="Row" fitContainer="true" width="auto" height="16px" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+						<items>
+							<Label text=""/>
+						</items>
+						<layoutData/>
+					</HBox>
+					<HBox alignItems="Start" direction="Row" fitContainer="true" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+						<items>
+							<Label text="Customer Number：" design="Standard" width="170px" required="true" textAlign="Begin" textDirection="RTL" visible="true" vAlign="Middle"/>
+							<Select id="Combox_CustomerID" width="200px" forceSelection="false" items="{ path: 'zreturn>/CustomerNo', sorter: { path: 'CustomerNumber' } }" change="onSelectChange">
+								<core:Item key="{zreturn>CustomerNumber}" text="{zreturn>CustomerNumber}"/>
+							</Select>
+							<Label text="" id="textEmpty" width="16px"/>
+							<Label text="" id="Text1" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true" vAlign="Middle"/>
+						</items>
+						<layoutData/>
+					</HBox>
+					<HBox alignItems="Start" direction="Row" fitContainer="true" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+						<items>
+							<Label text="Sales Area：" design="Standard" width="170px" required="true" textAlign="Begin" textDirection="RTL" visible="true" vAlign="Middle"/>
+							<Select id="Combox_SalesAreaID" forceSelection="false" width="200px" change="onSelectChangeSalesArea" items="{ path: 'zreturn>/CustomerProfile', sorter: { path: 'SalesOrg' } }">
+								<core:Item key="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}" text="{zreturn>SalesOrg}/{zreturn&gt;SalesChannel}/{zreturn>SalesDivision}"/>
+							</Select>
+						</items>
+						<layoutData/>
+					</HBox>
+				</items>
+				<layoutData/>
+			</VBox>
 			<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" id="oTableCreate">
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
